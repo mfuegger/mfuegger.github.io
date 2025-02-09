@@ -1,0 +1,67 @@
+body {
+	color: #202020;
+}
+
+h1 {
+	font-weight: 500;
+}
+
+h2 {
+	color: #40ad56;
+	font-weight: 400;
+	margin-top: 50px;
+}
+
+a {
+	--color: #73a4f5;
+	text-decoration: none;
+}
+
+h2.alt {
+	color: #202020;
+	margin-top: 10px;
+}
+
+#file {
+	padding-top: 20px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#main-img {
+	padding-top: 30px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 30px;
+}
+
+.container {
+	max-width: 800px;
+	margin-top: 30px;
+	margin-bottom: 100px;
+}
+
+.wide li {
+	margin-top: 10px;
+}
+
+.bibtexnumber {
+	padding-right: 5px;
+}
+
+.announce {
+	width: 100%;
+}
+
+
+@media (max-width: 768px) {
+	h2 {
+		margin-top: 30px;
+	}
+	ul {
+		padding-left: 20px;
+	}
+	.wide li {
+		margin-top: 5px;
+	}
+}
