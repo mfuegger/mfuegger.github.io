@@ -1,0 +1,706 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>FWF project Self-stabilizing Byzantine Fault-Tolerant Distributed Algorithms for Integrated Circuits (SIC)</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <div id="contents">
+      <h1>Project SIC:<br>
+          Self-stabilizing Byzantine Fault-Tolerant Distributed Algorithms for Integrated Circuits</h1>
+      <p>Funded by the Austrian Science Foundation (FWF), project SIC (P26436).<br>
+        Funding period: November 2013 to September 2018.
+      </p>
+
+      <h2>Motivation</h2>
+      <hr />
+      <p>Circuit components may fail permanently, e.g., due to manufacturing defects and electrical wear-out, or transiently
+          e.g., due to ionizing particles, cross-talk and temporary out-of-spec operating conditions.
+        There is a large body of work on how to decrease probabilities of such faults on
+          circuit-level, e.g., by choice of material and cell design, and on software-level.
+        However, significantly less was known about algorithmic techniques on circuit-level.
+      </p>
+
+      <h2>Aim</h2>
+      <hr />
+      <p>
+        Aim of the project was to fill this gap.
+        Distributed computing traditionally studies the behavior of networks of communicating processes in
+          presence of faults.
+        Interestingly, VLSI circuits can be viewed as distributed systems at several levels of abstraction:
+          from gates that communicate via binary signals, to components in a network on chip (NoC).
+        We thus studied distributed algorithms that can be efficiently implemented directly in hardware, providing robust services to other hardware components or the application layer.
+
+        Examples of such services are robust clock synchronization, clock frequency adaptation in presence of voltage droops, communication infrastructure on a chip, etc.
+      </p>
+
+      <h2>Challenges</h2>
+      <hr />
+      <p>
+      Typically processes of such a distributed system are highly restricted in communication primitives and computational power in comparison to the processes that are classically studied in software inspired distributed systems.
+      The study of faithful distributed computing models that capture the particulates of distributed algorithms at
+        circuit-level was a major first step for such an approach: existing algorithms that, e.g.,
+        provide services like a synchronized distributed clock signal, were prohibitively costly in the
+        communication and computation primitives they used, had (fault) assumptions that were not
+        compatible with gate-level algorithms, or performance measures that rendered them useless at
+        gate-level.
+
+      A focus of the SIC project was on self-stabilizing algorithms: a system solves a problem
+        in a self-stabilizing way if, starting from an arbitrarily corrupted state, it
+        solves the problem in the suffix of an execution.
+      Self-stabilizing algorithms are of great interest for missions where state corruption
+        cannot easily be removed by maintenance or manual reset; e.g., in space missions.
+      </p>
+
+      <h2>Project Members</h2>
+      <hr />
+      <p>
+      <ul>
+      <li>Matthias F&uuml;gger, project leader</li>
+      <li><a href="https://ti.tuwien.ac.at/ecs/people?person_id=4442">Florian Huemer</a>, TU Wien</li>
+      <li><a href="https://ti.tuwien.ac.at/ecs/people/jmaier">J&uuml;rgen Maier</a>, TU Wien</li>
+      <li>Robert Najvirt</li>
+      <li><a href="https://ti.tuwien.ac.at/ecs/people/martin-perner">Martin Perner</a>, TU Wien</li>
+      <li><a href="https://ti.tuwien.ac.at/ecs/people/schmid">Ulrich Schmid</a>, head of ECS group, TU Wien</li>
+      <li><a href="https://ti.tuwien.ac.at/ecs/people?person_id=3897">Manfred Schwarz</a>, TU Wien</li>
+      <li><a href="https://ti.tuwien.ac.at/ecs/people/steininger/">Andreas Steininger</a>, leading the VLSI design team at ECS, TU Wien</li>
+      <li>Varadan Savulimedu Veeravalli</li>
+      </ul>
+      </p>
+
+
+      <h2>Results</h2>
+      <hr />
+      <p>
+
+<table>
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="MFNS19:async">34</a>]
+</td>
+<td class="bibtexitem">
+J&uuml;rgen Maier, Matthias F&uuml;gger, Thomas Nowak, and Ulrich Schmid.
+ Transistor-level analysis of dynamic delay models.
+ In <em>IEEE International Symposium on Asynchronous Circuits and
+  Systems (ASYNC)</em>, 2019.<br />
+[&nbsp;<a href="sic_bib.html#MFNS19:async">bib</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="MS19:async">33</a>]
+</td>
+<td class="bibtexitem">
+J&uuml;rgen Maier and Andreas Steininger.
+ Efficient metastability characterization for schmitt-triggers.
+ In <em>IEEE International Symposium on Asynchronous Circuits and
+  Systems (ASYNC)</em>, 2019.<br />
+[&nbsp;<a href="sic_bib.html#MS19:async">bib</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="FKLW18:async">32</a>]
+</td>
+<td class="bibtexitem">
+Matthias F&uuml;gger, Attila Kinali, Christoph Lenzen, and Ben Wiederhake.
+ Fast all-digital clock frequency adaptation circuit for voltage droop
+  tolerance.
+ In <em>IEEE International Symposium on Asynchronous Circuits and
+  Systems (ASYNC)</em>, pages 68-77, May 2018.<br />
+[&nbsp;<a href="sic_bib.html#FKLW18:async">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/ASYNC.2018.00025">DOI</a>&nbsp;| 
+<a href="https://hal.inria.fr/hal-01936403">hal</a>&nbsp;| 
+<a href="https://ieeexplore.ieee.org/document/8589986">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="HPS18:ddecs">31</a>]
+</td>
+<td class="bibtexitem">
+Florian Huemer, Thomas Polzer, and Andreas Steininger.
+ Using a duplex time-to-digital converter for metastability
+  characterization of an fpga.
+ In <em>2018 IEEE 21st International Symposium on Design and
+  Diagnostics of Electronic Circuits Systems (DDECS)</em>, pages 141-146, April
+  2018.<br />
+[&nbsp;<a href="sic_bib.html#HPS18:ddecs">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/DDECS.2018.00032">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="FMNNS18:date">30</a>]
+</td>
+<td class="bibtexitem">
+Matthias F&uuml;gger, J&uuml;rgen Maier, Robert Najvirt, Thomas Nowak, and Ulrich
+  Schmid.
+ A faithful binary circuit model with adversarial noise.
+ In <em>Design, Automation &amp; Test in Europe (DATE)</em>, pages
+  1327-1332. IEEE, 2018.<br />
+[&nbsp;<a href="sic_bib.html#FMNNS18:date">bib</a>&nbsp;| 
+<a href="https://hal.archives-ouvertes.fr/hal-01738254/">hal</a>&nbsp;| 
+<a href="https://ieeexplore.ieee.org/abstract/document/8342219/">url</a>&nbsp;| 
+<a href="https://www.lsv.fr/~mfuegger/papers/FMNNS18_date.pdf">preprint</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="FFL18:toc">29</a>]
+</td>
+<td class="bibtexitem">
+Stephan Friedrichs, Matthias F&uuml;gger, and Christoph Lenzen.
+ Metastability-containing circuits.
+ <em>IEEE Transactions on Computers</em>, 67(8), 2018.<br />
+[&nbsp;<a href="sic_bib.html#FFL18:toc">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/TC.2018.2808185">DOI</a>&nbsp;| 
+<a href="https://hal.inria.fr/hal-01936292">hal</a>&nbsp;| 
+<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8314764">url</a>&nbsp;| 
+<a href="https://arxiv.org/abs/1606.06570">arxiv long version</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="FNS18:podc">28</a>]
+</td>
+<td class="bibtexitem">
+Matthias F&uuml;gger, Thomas Nowak, and Manfred Schwarz.
+ Tight bounds for asymptotic and approximate consensus.
+ In <em>ACM Symposium on Principles of Distributed Computing (PODC)</em>,
+  pages 325-334, New York, NY, USA, 2018. ACM.<br />
+[&nbsp;<a href="sic_bib.html#FNS18:podc">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1145/3212734.3212762">DOI</a>&nbsp;| 
+<a href="https://hal.archives-ouvertes.fr/hal-01799039">hal</a>&nbsp;| 
+<a href="http://doi.acm.org/10.1145/3212734.3212762">url</a>&nbsp;| 
+<a href="https://arxiv.org/abs/1705.02898">arxiv long version</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="BRSSW18:tcs">27</a>]
+</td>
+<td class="bibtexitem">
+Martin Biely, Peter Robinson, Ulrich Schmid, Manfred Schwarz, and Kyrill
+  Winkler.
+ Gracefully degrading consensus and k-set agreement in directed
+  dynamic networks.
+ <em>Theoretical Computer Science</em>, 726:41-77, 2018.<br />
+[&nbsp;<a href="sic_bib.html#BRSSW18:tcs">bib</a>&nbsp;| 
+<a href="https://doi.org/10.1016/j.tcs.2018.02.019">DOI</a>&nbsp;| 
+<a href="http://www.sciencedirect.com/science/article/pii/S0304397518301166">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="PHS18:mr">26</a>]
+</td>
+<td class="bibtexitem">
+Thomas Polzer, Florian Huemer, and Andreas Steininger.
+ Refined metastability characterization using a time-to-digital
+  converter.
+ <em>Microelectronics Reliability</em>, 80:91 - 99, 2018.<br />
+[&nbsp;<a href="sic_bib.html#PHS18:mr">bib</a>&nbsp;| 
+<a href="https://doi.org/10.1016/j.microrel.2017.11.017">DOI</a>&nbsp;| 
+<a href="http://www.sciencedirect.com/science/article/pii/S0026271417305462">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="PS18:otrs">25</a>]
+</td>
+<td class="bibtexitem">
+Martin Perner and Ulrich Schmid.
+ Self-stabilizing high-speed communication in multi-synchronous GALS
+  architectures.
+ In <em>24th IEEE International Symposium on On-Line Testing And
+  Robust System Design, IOLTS 2018, Platja D'Aro, Spain, July 2-4, 2018</em>,
+  pages 157-164, 2018.<br />
+[&nbsp;<a href="sic_bib.html#PS18:otrs">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/IOLTS.2018.8474221">DOI</a>&nbsp;| 
+<a href="https://doi.org/10.1109/IOLTS.2018.8474221">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="NPS17:async">24</a>]
+</td>
+<td class="bibtexitem">
+Robert Najvirt, Thomas Polzer, and Andreas Steininger.
+ Measuring metastability with free-running clocks.
+ In <em>23rd IEEE International Symposium on Asynchronous Circuits
+  and Systems (ASYNC)</em>, pages 18-24, May 2017.<br />
+[&nbsp;<a href="sic_bib.html#NPS17:async">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/ASYNC.2017.18">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="PHS17:ddecs">23</a>]
+</td>
+<td class="bibtexitem">
+Thomas Polzer, Florian Huemer, and Andreas Steininger.
+ Measuring metastability using a time-to-digital converter.
+ In <em>IEEE 20th International Symposium on Design and Diagnostics
+  of Electronic Circuits Systems (DDECS)</em>, pages 116-121, April 2017.<br />
+[&nbsp;<a href="sic_bib.html#PHS17:ddecs">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/DDECS.2017.7934582">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="TFL17:async">22</a>]
+</td>
+<td class="bibtexitem">
+Ghaith Tarawneh, Matthias F&uuml;gger, and Christoph Lenzen.
+ Metastability tolerant computing.
+ In <em>IEEE International Symposium on Asynchronous Circuits and
+  Systems (ASYNC)</em>, pages 25-32, 2017.<br />
+[&nbsp;<a href="sic_bib.html#TFL17:async">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/ASYNC.2017.9">DOI</a>&nbsp;| 
+<a href="https://hal.archives-ouvertes.fr/hal-01652772">hal</a>&nbsp;| 
+<a href="http://ieeexplore.ieee.org/abstract/document/8097381/">url</a>&nbsp;| 
+<a href="https://www.lsv.fr/~mfuegger/papers/TFL17_async.pdf">preprint</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="FKLP17:async">21</a>]
+</td>
+<td class="bibtexitem">
+Matthias F&uuml;gger, Attila Kinali, Christoph Lenzen, and Thomas Polzer.
+ Metastability-aware memory-efficient time-to-digital converter.
+ In <em>IEEE International Symposium on Asynchronous Circuits and
+  Systems (ASYNC)</em>, pages 49-56, 2017.<br />
+[&nbsp;<a href="sic_bib.html#FKLP17:async">bib</a>&nbsp;| 
+<a href="https://hal.archives-ouvertes.fr/hal-01652787">hal</a>&nbsp;| 
+<a href="http://ieeexplore.ieee.org/abstract/document/8097384/">url</a>&nbsp;| 
+<a href="https://www.lsv.fr/~mfuegger/papers/FKLP17_async.pdf">preprint</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="FNS17:disc">20</a>]
+</td>
+<td class="bibtexitem">
+Matthias F&uuml;gger, Thomas Nowak, and Manfred Schwarz.
+ Brief announcement: Lower bounds for asymptotic consensus in dynamic
+  networks.
+ In <em>31st International Symposium on Distributed Computing
+  (DISC)</em>, Leibniz International Proceedings in Informatics (LIPIcs), pages
+  51:1-51:3, 2017.<br />
+[&nbsp;<a href="sic_bib.html#FNS17:disc">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.4230/LIPIcs.DISC.2017.51">DOI</a>&nbsp;| 
+<a href="https://hal.archives-ouvertes.fr/hal-01652851">hal</a>&nbsp;| 
+<a href="http://drops.dagstuhl.de/opus/volltexte/2017/7992/">url</a>&nbsp;| 
+<a href="https://www.lsv.fr/~mfuegger/papers/FNS18_disc.pdf">preprint</a>&nbsp;| 
+<a href="https://arxiv.org/abs/1705.02898">arxiv long version</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="PS17:jcsc">19</a>]
+</td>
+<td class="bibtexitem">
+Thomas Polzer and Andreas Steininger.
+ A model for the metastability delay of sequential elements.
+ <em>Journal of Circuits, Systems, and Computers</em>, 26(8):1-22, 2017.<br />
+[&nbsp;<a href="sic_bib.html#PS17:jcsc">bib</a>&nbsp;| 
+<a href="https://doi.org/10.1142/S0218126617400102">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="SMN16:async">18</a>]
+</td>
+<td class="bibtexitem">
+Andreas Steininger, J&uuml;rgen Maier, and Robert Najvirt.
+ The metastable behavior of a schmitt-trigger.
+ In <em>22nd IEEE International Symposium on Asynchronous Circuits
+  and Systems (ASYNC)</em>, pages 57-64, May 2016.<br />
+[&nbsp;<a href="sic_bib.html#SMN16:async">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/ASYNC.2016.19">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="PNBS15:jcsc">17</a>]
+</td>
+<td class="bibtexitem">
+Thomas Polzer, Robert Najvirt, Florian Beck, and Andreas Steininger.
+ On the appropriate handling of metastable voltages in fpgas.
+ <em>Journal of Circuits, Systems and Computers</em>, 25(03), 2016.<br />
+[&nbsp;<a href="sic_bib.html#PNBS15:jcsc">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1142/S021812661640020X">DOI</a>&nbsp;| 
+<a href="http://arxiv.org/abs/http://www.worldscientific.com/doi/pdf/10.1142/S021812661640020X">arXiv</a>&nbsp;| 
+<a href="http://www.worldscientific.com/doi/abs/10.1142/S021812661640020X">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="DFLPS16:jcss">16</a>]
+</td>
+<td class="bibtexitem">
+Danny Dolev, Matthias F&uuml;gger, Christoph Lenzen, Martin Perner, and Ulrich
+  Schmid.
+ HEX: Scaling honeycombs is easier than scaling clock trees.
+ <em>Journal of Computer and System Sciences</em>, 82(5):929-956, 2016.<br />
+[&nbsp;<a href="sic_bib.html#DFLPS16:jcss">bib</a>&nbsp;| 
+<a href="https://www.sciencedirect.com/science/article/pii/S002200001600026X">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="FNS16:ieeetc">15</a>]
+</td>
+<td class="bibtexitem">
+Matthias F&uuml;gger, Thomas Nowak, and Ulrich Schmid.
+ Unfaithful glitch propagation in existing binary circuit models.
+ <em>IEEE Transactions on Computers</em>, 65(3):964-978, 2016.<br />
+[&nbsp;<a href="sic_bib.html#FNS16:ieeetc">bib</a>&nbsp;| 
+<a href="https://hal.archives-ouvertes.fr/hal-01231501">hal</a>&nbsp;| 
+<a href="http://ieeexplore.ieee.org/abstract/document/7110587/">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="CFN16:icalp">14</a>]
+</td>
+<td class="bibtexitem">
+Bernadette Charron-Bost, Matthias F&uuml;gger, and Thomas Nowak.
+ Fast, robust, quantizable approximate consensus.
+ In <em>43rd International Colloquium on Automata, Languages, and
+  Programming (ICALP)</em>, volume&nbsp;55, pages 137:1-137:14, 2016.<br />
+[&nbsp;<a href="sic_bib.html#CFN16:icalp">bib</a>&nbsp;| 
+<a href="https://hal.archives-ouvertes.fr/hal-01395576">hal</a>&nbsp;| 
+<a href="http://drops.dagstuhl.de/opus/volltexte/2016/6281/">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="SWS16:icdcn">13</a>]
+</td>
+<td class="bibtexitem">
+Manfred Schwarz, Kyrill Winkler, and Ulrich Schmid.
+ Fast consensus under eventually stabilizing message adversaries.
+ In <em>Proceedings of the 17th International Conference on
+  Distributed Computing and Networking</em>, ICDCN '16, pages 7:1-7:10, New York,
+  NY, USA, 2016. ACM.<br />
+[&nbsp;<a href="sic_bib.html#SWS16:icdcn">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1145/2833312.2833323">DOI</a>&nbsp;| 
+<a href="http://doi.acm.org/10.1145/2833312.2833323">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="SNM16:dsd">12</a>]
+</td>
+<td class="bibtexitem">
+Andreas Steininger, Robert Najvirt, and J&uuml;rgen Maier.
+ Does cascading schmitt-trigger stages improve the metastable
+  behavior?
+ In <em>2016 Euromicro Conference on Digital System Design (DSD)</em>,
+  pages 372-379, Aug 2016.<br />
+[&nbsp;<a href="sic_bib.html#SNM16:dsd">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/DSD.2016.56">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="NS15:async">11</a>]
+</td>
+<td class="bibtexitem">
+Robert Najvirt and Andreas Steininger.
+ How to synchronize a pausible clock to a reference.
+ In <em>21st IEEE International Symposium on Asynchronous Circuits
+  and Systems</em>, pages 9-16, May 2015.<br />
+[&nbsp;<a href="sic_bib.html#NS15:async">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/ASYNC.2015.10">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="FNNS15:date">10</a>]
+</td>
+<td class="bibtexitem">
+Matthias F&uuml;gger, Robert Najvirt, Thomas Nowak, and Ulrich Schmid.
+ Towards binary circuit models that faithfully capture physical
+  solvability.
+ In <em>Design, Automation &amp; Test in Europe (DATE)</em>, pages
+  1455-1460, 2015.<br />
+[&nbsp;<a href="sic_bib.html#FNNS15:date">bib</a>&nbsp;| 
+<a href="https://hal.archives-ouvertes.fr/hal-01107436">hal</a>&nbsp;| 
+<a href="http://ieeexplore.ieee.org/document/7092619/">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="CFWW15:talg">9</a>]
+</td>
+<td class="bibtexitem">
+Bernadette Charron-Bost, Matthias F&uuml;gger, Jennifer&nbsp;L. Welch, and Josef
+  Widder.
+ Time complexity of link reversal routing.
+ <em>ACM Transactions on Algorithms</em>, 11(3):18:1-18:39, January
+  2015.<br />
+[&nbsp;<a href="sic_bib.html#CFWW15:talg">bib</a>&nbsp;| 
+<a href="http://doi.acm.org/10.1145/2644815">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="NFNSHS15:glsvlsi">8</a>]
+</td>
+<td class="bibtexitem">
+Robert Najvirt, Matthias F&uuml;gger, Thomas Nowak, Ulrich Schmid, Michael
+  Hofbauer, and Kurt Schweiger.
+ Experimental validation of a faithful binary circuit model.
+ In <em>Proceedings of the 25th Edition on Great Lakes Symposium on
+  VLSI (GLSVLSI)</em>, pages 355-360. ACM, 2015.<br />
+[&nbsp;<a href="sic_bib.html#NFNSHS15:glsvlsi">bib</a>&nbsp;| 
+<a href="https://hal.archives-ouvertes.fr/hal-01231509">hal</a>&nbsp;| 
+<a href="http://doi.acm.org/10.1145/2742060.2742081">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="FKNSZ15:pe">7</a>]
+</td>
+<td class="bibtexitem">
+Matthias F&uuml;gger, Alexander K&ouml;&szlig;ler, Thomas Nowak, Ulrich Schmid, and
+  Martin Zeiner.
+ The effect of forgetting on the performance of a synchronizer.
+ <em>Performance Evaluation</em>, 93:1-16, 2015.<br />
+[&nbsp;<a href="sic_bib.html#FKNSZ15:pe">bib</a>&nbsp;| 
+<a href="https://hal.archives-ouvertes.fr/hal-01231498">hal</a>&nbsp;| 
+<a href="http://www.sciencedirect.com/science/article/pii/S0166531615000826">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="BRSSW15:netsys">6</a>]
+</td>
+<td class="bibtexitem">
+Martin Biely, Peter Robinson, Ulrich Schmid, Manfred Schwarz, and Kyrill
+  Winkler.
+ Gracefully degrading consensus and k-set agreement in directed
+  dynamic networks.
+ In <em>Networked Systems - Third International Conference, NETYS
+  2015, Agadir, Morocco, May 13-15, 2015, Revised Selected Papers</em>, pages
+  109-124, 2015.<br />
+[&nbsp;<a href="sic_bib.html#BRSSW15:netsys">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1007/978-3-319-26850-7\_8">DOI</a>&nbsp;| 
+<a href="https://doi.org/10.1007/978-3-319-26850-7\_8">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="NS15:patmos">5</a>]
+</td>
+<td class="bibtexitem">
+Robert Najvirt and Andreas Steininger.
+ A versatile and reliable glitch filter for clocks.
+ In <em>Power and Timing Modeling, Optimization and Simulation
+  (PATMOS), 2015 25th International Workshop on</em>, pages 140-147, Sept 2015.<br />
+[&nbsp;<a href="sic_bib.html#NS15:patmos">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/PATMOS.2015.7347599">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="NS15:ecctd">4</a>]
+</td>
+<td class="bibtexitem">
+Robert Najvirt and Andreas Steininger.
+ A pausible clock with crystal oscillator accuracy.
+ In <em>Circuit Theory and Design (ECCTD), 2015 European Conference
+  on</em>, pages 1-4, Aug 2015.<br />
+[&nbsp;<a href="sic_bib.html#NS15:ecctd">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/ECCTD.2015.7300051">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="DFSL14:jacm">3</a>]
+</td>
+<td class="bibtexitem">
+Danny Dolev, Matthias F&uuml;gger, Ulrich Schmid, and Christoph Lenzen.
+ Fault-tolerant algorithms for tick-generation in asynchronous logic:
+  Robust pulse generation.
+ <em>J. ACM</em>, 61(5):30:1-30:74, September 2014.<br />
+[&nbsp;<a href="sic_bib.html#DFSL14:jacm">bib</a>&nbsp;| 
+<a href="http://doi.acm.org/10.1145/2560561">url</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="NS14:patmos">2</a>]
+</td>
+<td class="bibtexitem">
+Robert Najvirt and Andreas Steininger.
+ Equivalence of clock gating and synchronization with applicability to
+  gals communication.
+ In <em>Proceedings of the 24th International Workshop on Power and
+  Timing Modeling, Optimization and Simulation</em>. IEEE, 2014.<br />
+[&nbsp;<a href="sic_bib.html#NS14:patmos">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/PATMOS.2014.6951873">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="DFPSSL14:jcss">1</a>]
+</td>
+<td class="bibtexitem">
+Danny Dolev, Matthias F&uuml;gger, Markus Posch, Ulrich Schmid, Andreas
+  Steininger, and Christoph Lenzen.
+ Rigorously modeling self-stabilizing fault-tolerant circuits: An
+  ultra-robust clocking scheme for systems-on-chip.
+ <em>Journal of Computer and System Sciences</em>, 80(4):860-900, 2014.<br />
+[&nbsp;<a href="sic_bib.html#DFPSSL14:jcss">bib</a>&nbsp;| 
+<a href="http://www.sciencedirect.com/science/article/pii/S0022000014000026">url</a>&nbsp;]
+
+</td>
+</tr>
+</table>
+
+      </p>
+      <p>
+      <em>(list generated by
+      <a href="http://www.lri.fr/~filliatr/bibtex2html/">bibtex2html</a>)</em>
+      </p>
+
+
+    </div>
+    <div id="LSV">
+      <h2 title="LSV logo"><span>About </span><a accesskey="1" href="http://www.lsv.ens-cachan.fr/" title="LSV---access key 1"><abbr title="Laboratoire Sp&eacute;cification et V&eacute;rification---accesskey 1">LSV</abbr></a></h2>
+    <ul id="lsvmenu" title="LSV Navigation Menu" itemtype="http://schema.org/SiteNavigationElement">
+      <li><a accesskey="N"
+             title="What's new at LSV---access key N"
+             href="http://www.lsv.ens-cachan.fr/">News</a></li>
+      <li><a accesskey="P"
+             title="Find out who works at LSV---access key P"
+             href="http://www.lsv.ens-cachan.fr/People/">People</a></li>
+      <li><a accesskey="R"
+             title="Learn more about research at LSV---access key R"
+             href="http://www.lsv.ens-cachan.fr/axes/">Research</a></li>
+      <li><a accesskey="S"
+             title="See the program of seminars at LSV---access key S"
+             href="http://www.lsv.ens-cachan.fr/Seminaires/">Seminars</a></li>
+      <li><a accesskey="T"
+             title="Go to the homepage of the computer science department of ENS Cachan---access key T"
+             href="http://www.dptinfo.ens-cachan.fr/">Teaching</a></li>
+      <li><a accesskey="C"
+             title="How to reach LSV---access key C"
+             href="http://www.lsv.ens-cachan.fr/info-acces">Contact</a></li>
+    </ul>
+
+    <ul id="logos">
+      <li><a href="http://www.ens-paris-saclay.fr" id="ens"><span>&Eactue;cole Normale Sup&eacute;rieure Paris-Saclay</span></a></li>
+      <li><a href="http://www.cnrs.fr" id="cnrs"><span>Centre National de la Recherche Scientifique</span></a></li>
+    </ul>
+  </div> <!-- end of #LSV -->
+
+  </body>
+</html>
+
