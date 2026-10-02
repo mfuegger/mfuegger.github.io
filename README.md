@@ -17,6 +17,7 @@ a framework, external web fonts, or a client-side rendering step.
 **Do not edit generated `index.html`, `publications.html`, `profile.json`,
 `profile.md`, `publications.json`, `teaching.html`, `teaching.json`, `teaching.md`, or `llms.txt`.** They are rebuilt from the
 source files above. All presentation styles for these pages live in CSS.
+The build versions the stylesheet URL from its contents so CSS edits refresh in browsers.
 `bibliography-status.json` is also generated; it records the last successful
 source check and its checksum.
 

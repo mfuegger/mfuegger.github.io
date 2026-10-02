@@ -85,6 +85,7 @@ def head(data, structured, page='home'):
         name=escape(data['name']),
         portrait_url='https://mfuegger.github.io/' + escape(data['portrait'], quote=True),
         page_title=escape(titles[page]),
+        stylesheet_url='assets/academic.css?v=' + hashlib.sha256((ROOT / 'assets/academic.css').read_bytes()).hexdigest()[:12],
         description=escape(descriptions[page]),
         canonical='https://mfuegger.github.io/' + (page + '.html' if page != 'home' else ''),
         alternates=nested(alternate_links, 2),
