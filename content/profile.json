@@ -29,7 +29,7 @@
     }
   ],
   "email": "mfuegger@lmf.cnrs.fr",
-  "portrait": "assets/portrait-2026.jpg",
+  "portrait": "assets/portrait-2026-3fbee1aa.jpg",
   "links": [
     {
       "label": "Publications",
@@ -38,6 +38,10 @@
     {
       "label": "ORCID",
       "url": "https://orcid.org/0000-0001-5765-0301"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/mfuegger"
     },
     {
       "label": "Institutional profile",

@@ -4,7 +4,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = 'https://mfuegger.github.io/'
@@ -88,9 +88,8 @@ def profile_outputs(homepage, data):
         'image': urljoin(SITE, data['portrait']),
         'jobTitle': captured['role'],
         'description': captured['lead'],
-        'sameAs': list(dict.fromkeys(link['url'] for link in parser.links
-                      if 'orcid.org/' in link['url'] or
-                      link['url'] == 'https://home.lmf.cnrs.fr/MatthiasFuegger/')),
+        'sameAs': list(dict.fromkeys(item['url'] for item in data['links']
+                      if urlsplit(item['url']).scheme in ('https', 'http'))),
         'affiliation': [{'@type': 'Organization', **item} for item in data['affiliations']],
         'worksFor': {'@type': 'Organization', **data['employer']},
     }

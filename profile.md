@@ -5,7 +5,7 @@ Research Director, CNRS
 [Laboratoire Méthodes Formelles](https://lmf.cnrs.fr/)
 Université Paris-Saclay · CNRS · ENS Paris-Saclay
 
-[Email](mailto:mfuegger@lmf.cnrs.fr) [Publications](https://mfuegger.github.io/publications.html) [ORCID](https://orcid.org/0000-0001-5765-0301) [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)
+[Email](mailto:mfuegger@lmf.cnrs.fr) [Publications](https://mfuegger.github.io/publications.html) [ORCID](https://orcid.org/0000-0001-5765-0301) [GitHub](https://github.com/mfuegger) [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)
 
 ## Research
 
