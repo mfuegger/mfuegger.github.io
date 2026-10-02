@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the static website from content/profile.json and publications.bib.
+"""Build the static website from content/profile.json and content/publications.bib.
 Run from any directory: python3 scripts/build_site.py
 Dependencies: bibtexparser==2.0.1, pylatexenc==2.11
 """
@@ -17,8 +17,10 @@ import unicodedata
 import bibtexparser
 from pylatexenc.latex2text import LatexNodes2Text
 from build_agent_data import json_text, profile_outputs, structured_script
+from package_site import copy_static_sources
 
 ROOT = Path(__file__).resolve().parents[1]
+OUTPUT = ROOT / "build"
 latex = LatexNodes2Text()
 
 
@@ -178,7 +180,7 @@ def update_legacy_footers(data):
                     affiliation_label=escape(data['affiliation_label']), root_prefix='..')
     stylesheet = '../assets/legacy-footer.css?v=' + hashlib.sha256((ROOT / 'assets/legacy-footer.css').read_bytes()).hexdigest()[:12]
     for name in ('habil/index.html', 'projects/sic.html'):
-        path = ROOT / name
+        path = OUTPUT / name
         markup = path.read_text(encoding='utf-8')
         markup = re.sub(r'<!-- Site footer -->.*?<!-- End site footer -->',
                         '<!-- Site footer -->\n' + footer + '\n<!-- End site footer -->', markup, flags=re.S)
@@ -345,10 +347,10 @@ def paper(entry, citation=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--refresh', action='store_true', help='Download the configured source bibliography before building.')
-    parser.add_argument('--refresh-if-enabled', action='store_true', help='Refresh only when bibliography-source.json enables scheduled refreshes.')
+    parser.add_argument('--refresh-if-enabled', action='store_true', help='Refresh only when content/bibliography-source.json enables scheduled refreshes.')
     args = parser.parse_args()
-    source_config = json.loads((ROOT / 'bibliography-source.json').read_text(encoding='utf-8'))
-    bibliography = (ROOT / 'publications.bib').read_text(encoding='utf-8')
+    source_config = json.loads((ROOT / 'content/bibliography-source.json').read_text(encoding='utf-8'))
+    bibliography = (ROOT / 'content/publications.bib').read_text(encoding='utf-8')
     refresh = args.refresh or (args.refresh_if_enabled and source_config['refresh_on_schedule'])
     if refresh:
         url = source_config['url']
@@ -367,7 +369,7 @@ def main():
     if not entries:
         raise ValueError('Bibliography is empty.')
     if refresh:
-        previous = bibtexparser.parse_file(str(ROOT / 'publications.bib')).entries
+        previous = bibtexparser.parse_file(str(ROOT / 'content/publications.bib')).entries
         if len(entries) < 0.8 * len(previous):
             raise ValueError('Source lost over 20% of entries; review before replacing the bibliography.')
     for entry in entries:
@@ -380,7 +382,7 @@ def main():
 
     selected_keys = [
         line.strip()
-        for line in (ROOT / 'selected-publications.txt').read_text(encoding='utf-8').splitlines()
+        for line in (ROOT / 'content/selected-publications.txt').read_text(encoding='utf-8').splitlines()
         if line.strip() and not line.lstrip().startswith('#')
     ]
     if len(set(selected_keys)) != len(selected_keys):
@@ -472,33 +474,37 @@ def main():
     teaching_page, teaching_data, teaching_markdown = teaching_outputs(data)
     notices = notice_outputs(data)
     # Render and validate everything before writing the outputs.
-    (ROOT / 'index.html').write_text(rendered_homepage, encoding='utf-8')
-    (ROOT / 'publications.html').write_text(page, encoding='utf-8')
-    (ROOT / 'teaching.html').write_text(teaching_page, encoding='utf-8')
-    (ROOT / 'teaching.json').write_text(json_text(teaching_data), encoding='utf-8')
-    (ROOT / 'teaching.md').write_text(teaching_markdown, encoding='utf-8')
-    (ROOT / 'profile.json').write_text(json_text({
+    copy_static_sources()
+    (OUTPUT / 'index.html').write_text(rendered_homepage, encoding='utf-8')
+    (OUTPUT / 'publications.html').write_text(page, encoding='utf-8')
+    (OUTPUT / 'teaching.html').write_text(teaching_page, encoding='utf-8')
+    (OUTPUT / 'teaching.json').write_text(json_text(teaching_data), encoding='utf-8')
+    (OUTPUT / 'teaching.md').write_text(teaching_markdown, encoding='utf-8')
+    (OUTPUT / 'profile.json').write_text(json_text({
         'url': 'https://mfuegger.github.io/', **data, 'schemaOrg': profile,
         'theses': [dict(label='Habilitation thesis', **data['habilitation']),
                    dict(label='PhD thesis', **doctoral)],
     }), encoding='utf-8')
-    (ROOT / 'profile.md').write_text(markdown, encoding='utf-8')
-    (ROOT / 'llms.txt').write_text(llms, encoding='utf-8')
-    (ROOT / 'publications.json').write_text(json_text({
+    (OUTPUT / 'profile.md').write_text(markdown, encoding='utf-8')
+    (OUTPUT / 'llms.txt').write_text(llms, encoding='utf-8')
+    (OUTPUT / 'publications.json').write_text(json_text({
         'profile': profile['@id'], 'source': source_config['url'],
         'count': len(records), 'publications': records,
     }), encoding='utf-8')
     for name, contents in notices.items():
-        (ROOT / name).write_text(contents, encoding='utf-8')
+        (OUTPUT / name).write_text(contents, encoding='utf-8')
     update_legacy_footers(data)
     if refresh:
-        (ROOT / 'publications.bib').write_text(bibliography, encoding='utf-8')
-        (ROOT / 'bibliography-status.json').write_text(json_text({
+        (ROOT / 'content/publications.bib').write_text(bibliography, encoding='utf-8')
+        (ROOT / 'content/bibliography-status.json').write_text(json_text({
             'source': source_config['url'],
             'checked_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
             'entries': len(entries),
             'source_sha256': hashlib.sha256(bibliography.encode('utf-8')).hexdigest(),
         }), encoding='utf-8')
+    # A refreshed bibliography and its check record are also public downloads.
+    for name in ('publications.bib', 'bibliography-status.json'):
+        (OUTPUT / name).write_bytes((ROOT / 'content' / name).read_bytes())
     print(f'Rendered {len(entries)} publications across {len(years)} years; {len(selected_keys)} selected papers.')
 
 

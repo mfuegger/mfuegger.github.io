@@ -7,7 +7,8 @@ from string import Template
 from urllib.parse import unquote, urlsplit
 import bibtexparser
 
-ROOT = Path(__file__).resolve().parents[1]
+SOURCE = Path(__file__).resolve().parents[1]
+ROOT = SOURCE / "build"
 
 
 class Page(HTMLParser):
@@ -70,13 +71,14 @@ class Page(HTMLParser):
 
 
 def main():
-    data = json.loads((ROOT / 'content/profile.json').read_text(encoding='utf-8'))
+    data = json.loads((SOURCE / 'content/profile.json').read_text(encoding='utf-8'))
     profile_data = json.loads((ROOT / 'profile.json').read_text(encoding='utf-8'))
     person = profile_data['schemaOrg']
     for key, value in data.items():
         assert profile_data[key] == value, f'Profile data drift: {key}'
     machine = json.loads((ROOT / 'publications.json').read_text(encoding='utf-8'))
     teaching = json.loads((ROOT / 'teaching.json').read_text(encoding='utf-8'))
+    assert (ROOT / 'publications.bib').read_bytes() == (SOURCE / 'content/publications.bib').read_bytes()
     library = bibtexparser.parse_file(str(ROOT / 'publications.bib'))
     assert not library.failed_blocks
     entries = {entry.key: entry for entry in library.entries}
@@ -109,7 +111,7 @@ def main():
     for item in teaching['schemaOrg']['mainEntity']['itemListElement']:
         assert urlsplit(item['url']).fragment in pages['teaching.html'].ids
     assert 'https://mfuegger.github.io/teaching.html' in (ROOT / 'sitemap.xml').read_text()
-    source_notices = json.loads((ROOT / 'content/notices.json').read_text())
+    source_notices = json.loads((SOURCE / 'content/notices.json').read_text())
     exported_notices = json.loads((ROOT / 'notices.json').read_text())
     for key, value in source_notices.items():
         if key != 'pages':
@@ -161,7 +163,7 @@ def main():
     assert doctoral['pdf_url'] in homepage.links
     assert doctoral['details_url'] in homepage.links
     assert profile_data['theses'][0]['title'] == data['habilitation']['title']
-    selected = [line.strip() for line in (ROOT / 'selected-publications.txt').read_text().splitlines()
+    selected = [line.strip() for line in (SOURCE / 'content/selected-publications.txt').read_text().splitlines()
                 if line.strip() and not line.lstrip().startswith('#')]
     assert homepage.papers == selected
     assert json.loads(homepage.json_texts[0])['mainEntity'] == person

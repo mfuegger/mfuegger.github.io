@@ -47,20 +47,18 @@ jobs:
             python scripts/build_site.py
           fi
           python scripts/check_site.py
-      - name: Save regenerated files when changed
+      - name: Save bibliography refresh when changed
         run: |
-          git add index.html publications.html publications.bib publications.json profile.json profile.md llms.txt bibliography-status.json teaching.html teaching.json teaching.md privacy.html privacy.md legal.html legal.md notices.json habil/index.html projects/sic.html
+          git add content/publications.bib content/bibliography-status.json
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m 'Regenerate publications and structured profile'
+            git commit -m 'Refresh source bibliography'
             git push
           fi
-      - name: Package public site
-        run: python scripts/package_site.py
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
+          path: build
 
   deploy:
     needs: build

@@ -3,38 +3,53 @@
 A static GitHub Pages website. Visitors receive complete HTML without JavaScript,
 a framework, external web fonts, or a client-side rendering step.
 
-## Edit these source files
+## Editing the website
 
-| Change | File |
-| --- | --- |
-| Biography, research, affiliations, software, teaching, contact | `content/profile.json` |
-| Privacy and legal notices, hosting details, review date | `content/notices.json` |
-| Full bibliography | `publications.bib` |
-| Homepage paper selection and order | `selected-publications.txt` |
-| Colors, typography, spacing, responsive layout | `assets/academic.css` |
-| Page layout, navigation, or section headings | `templates/` |
-| Bibliography refresh source and schedule toggle | `bibliography-source.json` |
+**For routine updates, open [`content/`](content/).** This is the editable source.
+The website is generated into `build/`, which is ignored by Git and does not appear
+in the GitHub file list. You do not edit the published HTML or JSON exports.
 
-**Do not edit generated `index.html`, `publications.html`, `profile.json`,
-`profile.md`, `publications.json`, `teaching.html`, `teaching.json`, `teaching.md`,
-`privacy.html`, `legal.html`, `privacy.md`, `legal.md`, `notices.json`, or `llms.txt`.** They are rebuilt from the
-source files above. All presentation styles for these pages live in CSS.
-The build versions the stylesheet URL from its contents so CSS edits refresh in browsers.
+| I want to change… | Open this source | Edit this part |
+| --- | --- | --- |
+| Courses and lectures | [content/profile.json](content/profile.json) | `teaching.courses` |
+| Biography and research | [content/profile.json](content/profile.json) | `description`, `research` |
+| Contact and profile links | [content/profile.json](content/profile.json) | `email`, `contact`, `links` |
+| Portrait | [content/profile.json](content/profile.json) | `portrait`, `portrait_dimensions` |
+| Homepage paper selection and order | [content/selected-publications.txt](content/selected-publications.txt) | One bibliography key per line |
+| Privacy and legal notices | [content/notices.json](content/notices.json) | Notice text, hosting details, review date |
+| Full bibliography | [content/publications.bib](content/publications.bib) | Usually refreshed automatically from the institutional bibliography |
+| Bibliography refresh settings | [content/bibliography-source.json](content/bibliography-source.json) | Source URL and schedule toggle |
+| Colors, typography, spacing | [assets/academic.css](assets/academic.css) | CSS |
+| Page layout or headings | [templates/](templates/) | HTML templates |
+
+**On GitHub:** open the source file above → click the pencil → make your edit →
+commit to `main`. GitHub Actions builds, checks, and publishes the website for you.
+No local build command is needed when editing on GitHub.
+
+### What the folders mean
+
+- **`content/`: edit here.** All routine text and course updates, bibliography,
+  selected papers, and notice data. Its README includes a course example.
+- **`assets/`: images and CSS.** Presentation styles stay separate from content.
+- **`templates/`: layouts.** Change these when changing page structure.
+- **`scripts/`: build code.** No changes needed for normal content updates.
+- **`build/`: generated website.** Created locally or by GitHub Actions; ignored by
+  Git. Files here are overwritten on the next build. Public URLs remain unchanged.
+- **`habil/` and `projects/`: archived page sources.** Their text can be edited
+  directly. The build adds the shared footer to the copies in `build/`.
+
 The portrait is displayed on the right at its natural aspect ratio, without cropping.
 To replace it, set `portrait` and `portrait_dimensions` (the image’s actual pixel
 width and height) in `content/profile.json`. Its display size is controlled in CSS.
 The Privacy and Legal notice footer links appear on every HTML page, including
-the archived habilitation and SIC pages. The build updates the marked footer and
-footer stylesheet blocks in those archived pages; their remaining content can be
-edited directly. The habilitation page uses its original Bootstrap stylesheet,
-now served locally, and no longer loads the unused Bootstrap script from a CDN.
+the archived habilitation and SIC pages. The build updates only the deployment
+copies of those archived pages. Their Bootstrap stylesheet is served locally.
 Notices reuse the name, email, and professional address from `content/profile.json`.
 Maintain their text and review date in `content/notices.json`; check them whenever
 hosting, contact handling, cookies, or embedded services change. The site checks
-reject external page assets so an unnoticed CDN or embedded script cannot silently
-contradict the notice. Outbound hyperlinks are allowed.
-`bibliography-status.json` is also generated; it records the last successful
-source check and its checksum.
+reject external page assets that would contradict the notice. Outbound hyperlinks
+are allowed. `content/bibliography-status.json` is maintained automatically and
+records the last successful bibliography check and its checksum.
 
 The homepage Research section uses `description` for the current focus and
 `research.description` for the additional research areas. Group roles remain in
@@ -45,7 +60,7 @@ stored in `url`. Keep the description as plain text; the build adds the links.
 
 The compact thesis entries follow the selected publications. Edit the habilitation
 in `habilitation`. The PhD entry uses `doctoral_thesis.bibliography_key` to derive
-its title, year, and PDF link from `publications.bib`; its display institution and
+its title, year, and PDF link from `content/publications.bib`; its display institution and
 repository details link are in `doctoral_thesis`. Both entries are exported in
 `profile.json` under `theses` and in `profile.md`.
 
@@ -62,6 +77,10 @@ For example, add a course to `teaching.courses` in `content/profile.json`:
 ```
 
 Replace the example with accurate information; do not publish placeholder courses.
+**Do not add counts or positions.** The build calculates `numberOfItems` and
+`position` automatically. The same course source generates the visible pages,
+JSON-LD metadata, and AI-readable exports.
+
 JSON uses double quotes and requires commas between array entries, without a
 trailing comma after the final entry. Edit the source directly on GitHub:
 committing to `main` rebuilds, checks, and publishes the site automatically.
@@ -80,8 +99,9 @@ accents); dates, collaborators, lecture durations, and course URLs follow the so
 
 `.github/workflows/site.yml` builds after every push to `main`, every Monday at
 06:17 UTC, and on demand from GitHub's **Actions → Build and publish academic
-website → Run workflow**. It saves regenerated files to the repository and deploys
-the public site through GitHub Pages.
+website → Run workflow**. It creates `build/` and deploys that directory through GitHub Pages. Generated
+pages are never committed back to the repository; only bibliography refreshes
+and their check records are saved.
 
 The weekly run downloads the canonical personal bibliography at:
 https://home.lmf.cnrs.fr/downloads/MatthiasFuegger/mf.bib
@@ -94,8 +114,8 @@ Successful refreshes commit a dated check record even when the papers did not
 change, keeping the scheduled workflow active during quiet publication periods.
 
 If you prefer to maintain the bibliography exclusively in this repository, set
-`refresh_on_schedule` to `false` in `bibliography-source.json`. Then edit
-`publications.bib` on GitHub; weekly runs rebuild without replacing it. Manual
+`refresh_on_schedule` to `false` in `content/bibliography-source.json`. Then edit
+`content/publications.bib` on GitHub; weekly runs rebuild without replacing it. Manual
 **Run workflow** refreshes can still be requested explicitly.
 
 GitHub Pages uses **GitHub Actions** as its publishing source. The workflow
@@ -117,10 +137,11 @@ After editing:
 ```sh
 python3 scripts/build_site.py
 python3 scripts/check_site.py
-python3 -m http.server 8765 --bind 127.0.0.1
+python3 -m http.server 8765 --bind 127.0.0.1 --directory build
 ```
 
-Open http://127.0.0.1:8765/. To fetch the institutional bibliography explicitly:
+Open http://127.0.0.1:8765/. The preview serves `build/`; edit `content/`,
+then rerun the build and check commands to update it. To fetch the institutional bibliography explicitly:
 
 ```sh
 python3 scripts/build_site.py --refresh
@@ -130,7 +151,7 @@ python3 scripts/build_site.py --refresh
 
 ## Search engines and AI readers
 
-The build generates all outputs from the same source data:
+The build generates these public files inside `build/` from the same source data:
 
 - Semantic, crawlable HTML with descriptive titles, canonical URLs, and metadata.
 - Schema.org `ProfilePage` / `Person` JSON-LD, including ORCID, affiliations, and
