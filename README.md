@@ -27,6 +27,15 @@ in the GitHub file list. You do not edit the published HTML or JSON exports.
 commit to `main`. GitHub Actions builds, checks, and publishes the website for you.
 No local build command is needed when editing on GitHub.
 
+### Shared item spacing
+
+For spacing within publications, software, courses, theses, and video captions,
+edit the `--item-*` CSS custom properties at the top of
+[assets/academic.css](assets/academic.css). They control title and detail line
+heights, the gaps after titles and details, the gap before links, and the space
+between archive entries. These components reuse the same values. Section spacing
+and ordinary prose have their own rules.
+
 ### What the folders mean
 
 - **`content/`: edit here.** All routine text and course updates, bibliography,

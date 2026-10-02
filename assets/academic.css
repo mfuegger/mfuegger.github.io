@@ -6,6 +6,13 @@
   --line: #e3e7e5;
   --paper: #fff;
   --tint: #f5f7f6;
+  /* Shared spacing for publications, software, courses, theses, and videos. */
+  --item-title-line-height: 1.45;
+  --item-line-height: 1.5;
+  --item-title-gap: 0.2rem;
+  --item-detail-gap: 0.12rem;
+  --item-links-gap: 0.25rem;
+  --item-spacing: 1.3rem;
   color-scheme: light;
 }
 * {
@@ -179,37 +186,45 @@ p {
   padding: 0;
 }
 .paper {
-  padding: 1.3rem 0;
+  padding: var(--item-spacing) 0;
   border-top: 1px solid var(--line);
 }
 .paper:first-child {
   border-top: 0;
   padding-top: 0;
 }
-.paper-title {
+.paper-title,
+.item-title {
   font-size: 1.04rem;
   font-weight: 600;
-  line-height: 1.45;
-  margin: 0 0 0.2rem;
+  line-height: var(--item-title-line-height);
+  margin: 0 0 var(--item-title-gap);
 }
-.paper-title a {
+.paper-title a,
+.item-title a {
   color: var(--ink);
   text-decoration: none;
 }
-.paper-title a:hover {
+.paper-title a:hover,
+.item-title a:hover {
   color: var(--accent);
   text-decoration: underline;
 }
-.authors {
+.authors,
+.item-detail {
   font-size: 0.9rem;
   color: var(--muted);
-  margin: 0 0 0.12rem;
-  line-height: 1.5;
+  margin: 0 0 var(--item-detail-gap);
+  line-height: var(--item-line-height);
 }
-.venue {
+.venue,
+.item-meta {
   font-size: 0.9rem;
-  margin: 0 0 0.25rem;
-  line-height: 1.5;
+  margin: 0 0 var(--item-links-gap);
+  line-height: var(--item-line-height);
+}
+.item-meta {
+  color: var(--muted);
 }
 .paper-links {
   display: flex;
@@ -217,15 +232,14 @@ p {
   gap: 0.3rem 1rem;
   font-size: 0.875rem;
   align-items: baseline;
+  line-height: var(--item-line-height);
+  margin: 0;
 }
 .paper-links a {
   text-decoration: none;
 }
 .paper-links a:hover {
   text-decoration: underline;
-}
-.paper .paper-links {
-  line-height: 1.5;
 }
 .paper-note {
   color: var(--muted);
@@ -234,15 +248,16 @@ p {
 
 /* Theses below the selected papers */
 .thesis {
-  padding-top: 1.3rem;
+  padding-top: var(--item-spacing);
   border-top: 1px solid var(--line);
 }
 .thesis + .thesis {
-  margin-top: 1.3rem;
+  margin-top: var(--item-spacing);
 }
 .thesis h3 {
   font-size: 1rem;
-  margin: 0 0 0.35rem;
+  margin: 0 0 var(--item-title-gap);
+  line-height: var(--item-title-line-height);
   font-weight: 600;
 }
 .thesis-title {
@@ -266,11 +281,14 @@ p {
 .course-list strong {
   display: block;
   font-weight: 500;
+  line-height: var(--item-title-line-height);
+  margin-bottom: var(--item-title-gap);
 }
 .course-list span {
   display: block;
   font-size: 0.9rem;
   color: var(--muted);
+  line-height: var(--item-line-height);
 }
 /* Static course previews link out; no third-party player is loaded. */
 .video-preview {
@@ -292,14 +310,15 @@ p {
 }
 .video-preview-caption {
   display: grid;
-  gap: 0.2rem;
+  gap: var(--item-title-gap);
   font-size: 0.875rem;
-  line-height: 1.5;
+  line-height: var(--item-line-height);
   color: var(--muted);
 }
 .video-preview-caption strong {
   font-weight: 500;
   color: var(--ink);
+  line-height: var(--item-title-line-height);
 }
 .video-preview-action {
   font-size: 0.8rem;
@@ -367,15 +386,16 @@ p {
 .teaching-course h3 {
   font-size: 1.04rem;
   font-weight: 500;
-  line-height: 1.45;
-  margin: 0 0 0.4rem;
+  line-height: var(--item-title-line-height);
+  margin: 0 0 var(--item-title-gap);
 }
-.teaching-course p {
-  margin: 0 0 0.45rem;
+.teaching-course .subtle {
+  margin: 0 0 var(--item-links-gap);
+  line-height: var(--item-line-height);
 }
 .teaching-courses li + li {
-  margin-top: 1.3rem;
-  padding-top: 1.3rem;
+  margin-top: var(--item-spacing);
+  padding-top: var(--item-spacing);
   border-top: 1px solid var(--line);
 }
 
