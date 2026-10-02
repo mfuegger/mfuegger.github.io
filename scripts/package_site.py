@@ -10,6 +10,7 @@ for name in (
     'index.html', 'publications.html', 'publications.bib', 'publications.json',
     'profile.json', 'profile.md', 'llms.txt', 'robots.txt', 'sitemap.xml',
     'bibliography-status.json', 'teaching.html', 'teaching.json', 'teaching.md',
+    'privacy.html', 'privacy.md', 'legal.html', 'legal.md', 'notices.json',
     '.nojekyll', 'assets', 'habil', 'projects', 'css',
 ):
     source = ROOT / name

@@ -3,6 +3,7 @@
 from html.parser import HTMLParser
 import json
 from pathlib import Path
+from string import Template
 from urllib.parse import unquote, urlsplit
 import bibtexparser
 
@@ -10,10 +11,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class Page(HTMLParser):
-    def __init__(self, path):
+    def __init__(self, path, check_styles=True):
         super().__init__()
+        self.check_styles = check_styles
         self.ids = set()
         self.links = []
+        self.assets = []
         self.papers = []
         self.citations = {}
         self.paper = None
@@ -26,7 +29,12 @@ class Page(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
-        assert 'style' not in attrs and tag != 'style', 'Styles belong in academic.css'
+        if self.check_styles:
+            assert 'style' not in attrs and tag != 'style', 'Styles belong in academic.css'
+        if tag in ('img', 'script', 'iframe') and attrs.get('src'):
+            self.assets.append(attrs['src'])
+        if tag == 'link' and 'stylesheet' in attrs.get('rel', '').split():
+            self.assets.append(attrs['href'])
         if 'id' in attrs:
             assert attrs['id'] not in self.ids, f'Duplicate id: {attrs["id"]}'
             self.ids.add(attrs['id'])
@@ -72,7 +80,9 @@ def main():
     library = bibtexparser.parse_file(str(ROOT / 'publications.bib'))
     assert not library.failed_blocks
     entries = {entry.key: entry for entry in library.entries}
-    pages = {name: Page(ROOT / name) for name in ('index.html', 'publications.html', 'teaching.html')}
+    pages = {name: Page(ROOT / name) for name in ('index.html', 'publications.html', 'teaching.html', 'privacy.html', 'legal.html')}
+    legacy_pages = {name: Page(ROOT / name, check_styles=False)
+                    for name in ('habil/index.html', 'projects/sic.html')}
     homepage = pages['index.html']
     publication_page = pages['publications.html']
     assert person['name'] == data['name'] and person['email'] == data['email']
@@ -99,6 +109,39 @@ def main():
     for item in teaching['schemaOrg']['mainEntity']['itemListElement']:
         assert urlsplit(item['url']).fragment in pages['teaching.html'].ids
     assert 'https://mfuegger.github.io/teaching.html' in (ROOT / 'sitemap.xml').read_text()
+    source_notices = json.loads((ROOT / 'content/notices.json').read_text())
+    exported_notices = json.loads((ROOT / 'notices.json').read_text())
+    for key, value in source_notices.items():
+        if key != 'pages':
+            assert exported_notices[key] == value, f'Notice data drift: {key}'
+    assert exported_notices['publisher'] == {
+        'name': data['name'], 'email': data['email'], 'address': data['contact']['address']}
+    hosting = source_notices['hosting']
+    context = {'name': data['name'], 'hosting_name': hosting['name'],
+               'hosting_service': hosting['service'], 'hosting_address': ', '.join(hosting['address'])}
+    assert len(exported_notices['pages']) == len(source_notices['pages'])
+    for notice in source_notices['pages']:
+        slug = notice['slug']
+        page = pages[slug + '.html']
+        visible_notice = ' '.join(''.join(page.text).split())
+        readable_notice = (ROOT / (slug + '.md')).read_text()
+        exported = next(item for item in exported_notices['pages'] if item['slug'] == slug)
+        assert exported['url'] == 'https://mfuegger.github.io/' + slug + '.html'
+        assert data['name'] in visible_notice and data['email'] in visible_notice
+        for section in notice['sections']:
+            exported_section = next(item for item in exported['sections'] if item['id'] == section['id'])
+            assert exported_section['paragraphs'] == [Template(value).substitute(context) for value in section['paragraphs']]
+            for paragraph in section['paragraphs']:
+                expected = Template(paragraph).substitute(context)
+                assert expected in visible_notice and expected in readable_notice
+        assert json.loads(page.json_texts[0])['dateModified'] == source_notices['last_reviewed']
+        assert 'https://mfuegger.github.io/' + slug + '.html' in (ROOT / 'sitemap.xml').read_text()
+    for name, page in {**pages, **legacy_pages}.items():
+        prefix = '..' if name in legacy_pages else '.'
+        assert prefix + '/privacy.html' in page.links and prefix + '/legal.html' in page.links
+        for asset in page.assets:
+            assert not urlsplit(asset).scheme and not urlsplit(asset).netloc, f'External asset contradicts privacy notice: {asset}'
+            assert (ROOT / name).parent.joinpath(asset.split('?')[0]).is_file(), f'Missing local asset: {asset}'
     assert machine['count'] == len(entries) == len(publication_page.papers)
     assert set(publication_page.papers) == set(entries)
     assert len(machine['publications']) == len(entries)
@@ -141,7 +184,7 @@ def main():
     for item in structured['itemListElement']:
         assert unquote(urlsplit(item['item']['@id']).fragment) in publication_page.ids
     assert 'Disallow: /' not in (ROOT / 'robots.txt').read_text()
-    print(f'Checked profile consistency, {len(entries)} exact BibTeX citations, {len(teaching["courses"])} teaching entries, JSON-LD, and local links.')
+    print(f'Checked profile consistency, {len(entries)} exact BibTeX citations, {len(teaching["courses"])} teaching entries, notices, footer links, local assets, JSON-LD, and local links.')
 
 
 if __name__ == '__main__':

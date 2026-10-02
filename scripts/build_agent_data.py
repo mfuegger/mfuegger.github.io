@@ -130,6 +130,13 @@ listed before publication.
 ## Primary sources
 - [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)
 - [Institutional bibliography](https://home.lmf.cnrs.fr/downloads/MatthiasFuegger/mf.bib)
+
+## Site information
+- [Privacy]({SITE}privacy.html): Cookies, hosting data, contact by email, and data-protection rights.
+- [Legal notice]({SITE}legal.html): Publisher, responsibility for content, and hosting provider.
+- [Notices in JSON]({SITE}notices.json): The source notices, hosting information, and publisher contact.
+- [Privacy in Markdown]({SITE}privacy.md)
+- [Legal notice in Markdown]({SITE}legal.md)
 '''
     return profile, markdown, llms
 

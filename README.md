@@ -8,6 +8,7 @@ a framework, external web fonts, or a client-side rendering step.
 | Change | File |
 | --- | --- |
 | Biography, research, affiliations, software, teaching, contact | `content/profile.json` |
+| Privacy and legal notices, hosting details, review date | `content/notices.json` |
 | Full bibliography | `publications.bib` |
 | Homepage paper selection and order | `selected-publications.txt` |
 | Colors, typography, spacing, responsive layout | `assets/academic.css` |
@@ -15,9 +16,20 @@ a framework, external web fonts, or a client-side rendering step.
 | Bibliography refresh source and schedule toggle | `bibliography-source.json` |
 
 **Do not edit generated `index.html`, `publications.html`, `profile.json`,
-`profile.md`, `publications.json`, `teaching.html`, `teaching.json`, `teaching.md`, or `llms.txt`.** They are rebuilt from the
+`profile.md`, `publications.json`, `teaching.html`, `teaching.json`, `teaching.md`,
+`privacy.html`, `legal.html`, `privacy.md`, `legal.md`, `notices.json`, or `llms.txt`.** They are rebuilt from the
 source files above. All presentation styles for these pages live in CSS.
 The build versions the stylesheet URL from its contents so CSS edits refresh in browsers.
+The Privacy and Legal notice footer links appear on every HTML page, including
+the archived habilitation and SIC pages. The build updates the marked footer and
+footer stylesheet blocks in those archived pages; their remaining content can be
+edited directly. The habilitation page uses its original Bootstrap stylesheet,
+now served locally, and no longer loads the unused Bootstrap script from a CDN.
+Notices reuse the name, email, and professional address from `content/profile.json`.
+Maintain their text and review date in `content/notices.json`; check them whenever
+hosting, contact handling, cookies, or embedded services change. The site checks
+reject external page assets so an unnoticed CDN or embedded script cannot silently
+contradict the notice. Outbound hyperlinks are allowed.
 `bibliography-status.json` is also generated; it records the last successful
 source check and its checksum.
 
@@ -126,6 +138,7 @@ The build generates all outputs from the same source data:
 - `publications.json` containing every paper's title, ordered author list, year,
   venue, status note, identifiers, links, and original BibTeX.
 - `teaching.json` and `teaching.md`, the complete teaching archive from the same source.
+- `notices.json`, `privacy.md`, and `legal.md`, the site notices from structured source data.
 - `llms.txt`, a convenience index for agents; this is an emerging convention,
   not a guarantee that agents or Google will use it.
 - `robots.txt` allowing crawlers and announcing `sitemap.xml`.

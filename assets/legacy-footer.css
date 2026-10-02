@@ -1,0 +1,29 @@
+/* Footer shared by archived pages; other page styles remain unchanged. */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid #e3e7e5;
+  width: min(100% - 2rem, 800px);
+  margin: 2rem auto 0;
+  padding: 1.8rem 0;
+  font: 0.875rem/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.footer a {
+  color: #5c6461;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.3rem;
+}
+@media (max-width: 640px) {
+  .footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

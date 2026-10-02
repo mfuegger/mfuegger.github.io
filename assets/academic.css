@@ -283,6 +283,8 @@ p {
 }
 .footer {
   display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
   color: var(--muted);
@@ -293,6 +295,19 @@ p {
 }
 .footer a {
   color: var(--muted);
+}
+.footer nav {
+  gap: 0.5rem 1.3rem;
+}
+.footer nav a {
+  font-size: inherit;
+  text-decoration: underline;
+}
+.notice-page {
+  max-width: 46rem;
+}
+.notice-page address {
+  font-style: normal;
 }
 
 /* Teaching archive */

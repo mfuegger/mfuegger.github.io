@@ -53,11 +53,11 @@ def common_layout(data, page='home'):
             teaching_current=' aria-current="page"' if page == 'teaching' else '',
             anchor_prefix='' if page == 'home' else './',
         ), 6),
-        'footer': nested(render('footer.html', name=escape(data['name']), affiliation_label=escape(data['affiliation_label'])), 6),
+        'footer': nested(render('footer.html', name=escape(data['name']), affiliation_label=escape(data['affiliation_label']), root_prefix='.'), 6),
     }
 
 
-def head(data, structured, page='home'):
+def head(data, structured, page='home', notice=None):
     titles = {
         'home': data['name'] + ' — ' + data['affiliation_label'].replace(' / ', ' · '),
         'publications': 'Publications — ' + data['name'],
@@ -68,6 +68,9 @@ def head(data, structured, page='home'):
         'publications': 'Publications by ' + data['name'] + ' and collaborators, with papers, preprints, and BibTeX citations.',
         'teaching': 'Courses and lectures by ' + data['name'] + ': courses and guest lectures, with the complete archive by year.',
     }
+    if notice:
+        titles[page] = notice['title'] + ' — ' + data['name']
+        descriptions[page] = notice['description']
     alternatives = [
         ('application/json', 'publications.json' if page == 'publications' else 'profile.json', 'Structured data'),
         ('application/x-bibtex', 'publications.bib', 'BibTeX bibliography') if page == 'publications' else
@@ -76,6 +79,9 @@ def head(data, structured, page='home'):
     if page == 'teaching':
         alternatives = [('application/json', 'teaching.json', 'Course data'),
                         ('text/markdown', 'teaching.md', 'Courses in Markdown')]
+    if notice:
+        alternatives = [('application/json', 'notices.json', 'Site notices data'),
+                        ('text/markdown', page + '.md', notice['title'] + ' in Markdown')]
     alternate_links = '\n'.join(
         f'<link rel="alternate" type="{kind}" href="{path}" title="{title}" />'
         for kind, path, title in alternatives
@@ -108,6 +114,78 @@ def course_metadata(course, include_year=True):
     date = ' '.join(str(value) for value in
                     (course.get('term', ''), course['year'] if include_year else '') if value)
     return ' · '.join(value for value in (date, course['details']) if value)
+
+
+def notice_outputs(data):
+    notices = json.loads((ROOT / 'content/notices.json').read_text(encoding='utf-8'))
+    hosting = notices['hosting']
+    context = {'name': data['name'], 'hosting_name': hosting['name'],
+               'hosting_service': hosting['service'],
+               'hosting_address': ', '.join(hosting['address'])}
+    outputs = {}
+    exported_pages = []
+    for notice in notices['pages']:
+        slug = notice['slug']
+        sections = []
+        exported_sections = []
+        markdown = [f'# {notice["title"]} — {data["name"]}\n\n{notice["intro"]}\n\n'
+                    f'Last reviewed: {notices["last_reviewed"]}\n\n'
+                    f'## {notice["contact_heading"]}\n\n{data["name"]}\n\n'
+                    + '\n'.join(data['contact']['address'])
+                    + f'\n\nEmail: {data["email"]}\n']
+        for section in notice['sections']:
+            paragraphs = [Template(value).substitute(context) for value in section['paragraphs']]
+            links = [dict(label=item['label'], url=hosting[item['hosting_key']] if 'hosting_key' in item else item['url'])
+                     for item in section.get('links', [])]
+            exported_sections.append(dict(section, paragraphs=paragraphs, links=[
+                dict(item, url=item['url'] if urlsplit(item['url']).scheme else 'https://mfuegger.github.io/' + item['url'])
+                for item in links]))
+            sections.append(render(
+                'notice-section.html', id=escape(section['id'], quote=True),
+                heading=escape(section['heading']),
+                paragraphs=nested('\n'.join('<p>' + escape(value) + '</p>' for value in paragraphs), 2),
+                links='<p class="paper-links">' + ' '.join(link(item['url'], item['label']) for item in links) + '</p>' if links else '',
+            ))
+            markdown.append('\n## ' + section['heading'] + '\n\n' + '\n\n'.join(paragraphs) + '\n')
+            for item in links:
+                absolute = item['url'] if urlsplit(item['url']).scheme else 'https://mfuegger.github.io/' + item['url']
+                markdown.append(f'\n[{item["label"]}]({absolute})\n')
+        structured = {'@context': 'https://schema.org', '@type': 'WebPage',
+                      'name': notice['title'] + ' — ' + data['name'],
+                      'url': 'https://mfuegger.github.io/' + slug + '.html',
+                      'dateModified': notices['last_reviewed'],
+                      'about': {'@id': 'https://mfuegger.github.io/#person'}}
+        outputs[slug + '.html'] = render(
+            'notice.html', head=head(data, structured, page=slug, notice=notice),
+            **common_layout(data, page=slug), title=escape(notice['title']),
+            intro=escape(notice['intro']), last_reviewed=escape(notices['last_reviewed']),
+            contact_heading=escape(notice['contact_heading']), name=escape(data['name']),
+            address='<br />'.join(escape(value) for value in data['contact']['address']),
+            email=link('mailto:' + data['email'], data['email']),
+            sections=nested('\n'.join(sections), 8),
+        ) + '\n'
+        outputs[slug + '.md'] = ''.join(markdown)
+        exported_pages.append(dict(notice, url=structured['url'], sections=exported_sections))
+    outputs['notices.json'] = json_text({
+        'publisher': {'name': data['name'], 'email': data['email'], 'address': data['contact']['address']},
+        **notices, 'pages': exported_pages,
+    })
+    return outputs
+
+
+def update_legacy_footers(data):
+    footer = render('footer.html', name=escape(data['name']),
+                    affiliation_label=escape(data['affiliation_label']), root_prefix='..')
+    stylesheet = '../assets/legacy-footer.css?v=' + hashlib.sha256((ROOT / 'assets/legacy-footer.css').read_bytes()).hexdigest()[:12]
+    for name in ('habil/index.html', 'projects/sic.html'):
+        path = ROOT / name
+        markup = path.read_text(encoding='utf-8')
+        markup = re.sub(r'<!-- Site footer -->.*?<!-- End site footer -->',
+                        '<!-- Site footer -->\n' + footer + '\n<!-- End site footer -->', markup, flags=re.S)
+        markup = re.sub(r'<!-- Footer stylesheet -->.*?<!-- End footer stylesheet -->',
+                        '<!-- Footer stylesheet -->\n<link rel="stylesheet" href="' + stylesheet + '" />\n<!-- End footer stylesheet -->',
+                        markup, flags=re.S)
+        path.write_text(markup, encoding='utf-8')
 
 
 def teaching_outputs(data):
@@ -390,6 +468,7 @@ def main():
     ) + '\n'
 
     teaching_page, teaching_data, teaching_markdown = teaching_outputs(data)
+    notices = notice_outputs(data)
     # Render and validate everything before writing the outputs.
     (ROOT / 'index.html').write_text(rendered_homepage, encoding='utf-8')
     (ROOT / 'publications.html').write_text(page, encoding='utf-8')
@@ -407,6 +486,9 @@ def main():
         'profile': profile['@id'], 'source': source_config['url'],
         'count': len(records), 'publications': records,
     }), encoding='utf-8')
+    for name, contents in notices.items():
+        (ROOT / name).write_text(contents, encoding='utf-8')
+    update_legacy_footers(data)
     if refresh:
         (ROOT / 'publications.bib').write_text(bibliography, encoding='utf-8')
         (ROOT / 'bibliography-status.json').write_text(json_text({

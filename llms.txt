@@ -26,3 +26,10 @@ listed before publication.
 ## Primary sources
 - [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)
 - [Institutional bibliography](https://home.lmf.cnrs.fr/downloads/MatthiasFuegger/mf.bib)
+
+## Site information
+- [Privacy](https://mfuegger.github.io/privacy.html): Cookies, hosting data, contact by email, and data-protection rights.
+- [Legal notice](https://mfuegger.github.io/legal.html): Publisher, responsibility for content, and hosting provider.
+- [Notices in JSON](https://mfuegger.github.io/notices.json): The source notices, hosting information, and publisher contact.
+- [Privacy in Markdown](https://mfuegger.github.io/privacy.md)
+- [Legal notice in Markdown](https://mfuegger.github.io/legal.md)
