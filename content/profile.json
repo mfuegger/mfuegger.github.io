@@ -9,7 +9,7 @@
     "name": "CNRS",
     "url": "https://www.cnrs.fr/"
   },
-  "description": "My current focus is the systematic engineering of robust microbial systems, with applications in bioproduction, diagnosis, and medical treatment. This work combines experiments, modeling, numerical simulation, AI, and mathematical analysis.",
+  "description": "My current focus is the systematic engineering of robust microbial systems, with applications in bioproduction, diagnosis, and medical treatment. This includes distributed computation in bacterial systems, particularly communication and coordination between cells. My approach combines experiments, modeling, numerical simulation, AI, and mathematical analysis.",
   "affiliations": [
     {
       "name": "Laboratoire Méthodes Formelles",
@@ -57,6 +57,12 @@
         "role": "head",
         "name": "Distributed Computing Group",
         "url": "https://lmf.cnrs.fr/Research/CDS"
+      }
+    ],
+    "description_links": [
+      {
+        "label": "distributed computation in bacterial systems",
+        "url": "https://www.dreamy.run/"
       }
     ]
   },

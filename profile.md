@@ -9,7 +9,7 @@ Université Paris-Saclay · CNRS · ENS Paris-Saclay
 
 ## Research
 
-My current focus is the systematic engineering of robust microbial systems, with applications in bioproduction, diagnosis, and medical treatment. This work combines experiments, modeling, numerical simulation, AI, and mathematical analysis.
+My current focus is the systematic engineering of robust microbial systems, with applications in bioproduction, diagnosis, and medical treatment. This includes [distributed computation in bacterial systems](https://www.dreamy.run/) , particularly communication and coordination between cells. My approach combines experiments, modeling, numerical simulation, AI, and mathematical analysis.
 
 I also study distributed algorithms and digital circuits, including consensus in dynamic networks, timing models, and fault tolerance.
 

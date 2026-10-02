@@ -24,6 +24,9 @@ source check and its checksum.
 The homepage Research section uses `description` for the current focus and
 `research.description` for the additional research areas. Group roles remain in
 `research.groups`; the visible text and machine-readable exports share this source.
+Use `research.description_links` for inline links in the current-focus paragraph:
+each `label` must match a phrase in `description` exactly once, with its target
+stored in `url`. Keep the description as plain text; the build adds the links.
 
 The compact thesis entries follow the selected publications. Edit the habilitation
 in `habilitation`. The PhD entry uses `doctoral_thesis.bibliography_key` to derive

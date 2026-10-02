@@ -149,6 +149,11 @@ def teaching_outputs(data):
 
 
 def homepage(data, selected, structured, doctoral):
+    description = escape(data['description'])
+    for item in data['research'].get('description_links', []):
+        if not item['label'] or data['description'].count(item['label']) != 1:
+            raise ValueError('Each research link label must occur exactly once in the description.')
+        description = description.replace(escape(item['label']), link(item['url'], item['label']), 1)
     affiliations = data['affiliations']
     affiliation_html = link(affiliations[0]['url'], affiliations[0]['name']) + '<br />' + ' · '.join(escape(item['name']) for item in affiliations[1:])
     group_roles = 'I am ' + ' and '.join(escape(group['role']) + ' of the ' + link(group['url'], group['name']) for group in data['research']['groups']) + ' ' + escape(data['research']['group_context']) + '.'
@@ -159,7 +164,7 @@ def homepage(data, selected, structured, doctoral):
         'head': head(data, structured),
         **common_layout(data),
         'name': escape(data['name']), 'role': escape(data['role']),
-        'description': escape(data['description']), 'portrait': escape(data['portrait'], quote=True),
+        'description': description, 'portrait': escape(data['portrait'], quote=True),
         'affiliations': affiliation_html,
         'quick_links': nested('\n'.join([link('mailto:' + data['email'], 'Email')] + [link(item['url'], item['label']) for item in data['links']]), 14),
         'research_description': escape(data['research']['description']),
