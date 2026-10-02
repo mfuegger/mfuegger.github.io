@@ -93,7 +93,7 @@ nav a[aria-current="page"] {
 /* Profile introduction */
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 152px;
+  grid-template-columns: minmax(0, 1fr) 216px;
   gap: 3.5rem;
   align-items: start;
   padding: 3rem 0 2.5rem;
@@ -118,10 +118,9 @@ nav a[aria-current="page"] {
 }
 .portrait {
   display: block;
-  width: 152px;
-  height: 176px;
-  object-fit: cover;
-  object-position: center;
+  width: 216px;
+  max-width: 100%;
+  height: auto;
   border-radius: 3px;
   margin-top: 0.5rem;
 }
@@ -406,13 +405,12 @@ article {
     gap: 0.5rem 1.2rem;
   }
   .intro {
-    grid-template-columns: minmax(0, 1fr) 88px;
+    grid-template-columns: minmax(0, 1fr) 112px;
     gap: 1.2rem;
     padding: 2.8rem 0 2.4rem;
   }
   .portrait {
-    width: 88px;
-    height: 106px;
+    width: 112px;
   }
   .intro h1 {
     font-size: 2.4rem;
@@ -478,6 +476,7 @@ article {
   }
   .intro {
     row-gap: 0;
+    grid-template-rows: min-content 1fr;
   }
 }
 
@@ -517,6 +516,6 @@ article {
   }
   .portrait {
     width: 100px;
-    height: 120px;
+    height: auto;
   }
 }

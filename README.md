@@ -20,6 +20,9 @@ a framework, external web fonts, or a client-side rendering step.
 `privacy.html`, `legal.html`, `privacy.md`, `legal.md`, `notices.json`, or `llms.txt`.** They are rebuilt from the
 source files above. All presentation styles for these pages live in CSS.
 The build versions the stylesheet URL from its contents so CSS edits refresh in browsers.
+The portrait is displayed on the right at its natural aspect ratio, without cropping.
+To replace it, set `portrait` and `portrait_dimensions` (the image’s actual pixel
+width and height) in `content/profile.json`. Its display size is controlled in CSS.
 The Privacy and Legal notice footer links appear on every HTML page, including
 the archived habilitation and SIC pages. The build updates the marked footer and
 footer stylesheet blocks in those archived pages; their remaining content can be

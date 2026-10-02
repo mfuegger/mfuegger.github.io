@@ -29,7 +29,7 @@
     }
   ],
   "email": "mfuegger@lmf.cnrs.fr",
-  "portrait": "assets/portrait-2026-3fbee1aa.jpg",
+  "portrait": "assets/portrait-matthias2-16b01fc5.jpg",
   "links": [
     {
       "label": "Publications",
@@ -232,5 +232,9 @@
     "bibliography_key": "fuegger:2010",
     "institution": "TU Wien",
     "details_url": "https://repositum.tuwien.at/handle/20.500.12708/14747"
+  },
+  "portrait_dimensions": {
+    "width": 2910,
+    "height": 3935
   }
 }

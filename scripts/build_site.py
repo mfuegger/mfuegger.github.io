@@ -250,6 +250,8 @@ def homepage(data, selected, structured, doctoral):
         **common_layout(data),
         'name': escape(data['name']), 'role': escape(data['role']),
         'description': description, 'portrait': escape(data['portrait'], quote=True),
+        'portrait_width': int(data['portrait_dimensions']['width']),
+        'portrait_height': int(data['portrait_dimensions']['height']),
         'affiliations': affiliation_html,
         'quick_links': nested('\n'.join([link('mailto:' + data['email'], 'Email')] + [link(item['url'], item['label']) for item in data['links']]), 14),
         'research_description': escape(data['research']['description']),
