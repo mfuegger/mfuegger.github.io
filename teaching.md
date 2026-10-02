@@ -24,7 +24,7 @@ Summer · TU Wien · Invited professor, Informatics Doctoral School.
 
 ### Computational Bioengineering
 
-Winter · With Thomas Nowak.
+Winter · With Thomas Nowak and Mariapia D’Urso.
 
 [Course website](https://compbioeng.biodis.co)
 
@@ -36,7 +36,7 @@ Winter · ENS Paris-Saclay · With Thomas Nowak.
 
 ### Computational Bioengineering
 
-Winter · With Thomas Nowak.
+Winter · With Thomas Nowak and Mariapia D’Urso.
 
 [Course website](https://compbioeng.biodis.co)
 

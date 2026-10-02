@@ -23,7 +23,7 @@
       "year": 2025,
       "term": "Winter",
       "name": "Computational Bioengineering",
-      "details": "With Thomas Nowak.",
+      "details": "With Thomas Nowak and Mariapia D’Urso.",
       "url": "https://compbioeng.biodis.co"
     },
     {
@@ -36,7 +36,7 @@
       "year": 2024,
       "term": "Winter",
       "name": "Computational Bioengineering",
-      "details": "With Thomas Nowak.",
+      "details": "With Thomas Nowak and Mariapia D’Urso.",
       "url": "https://compbioeng.biodis.co"
     },
     {
@@ -166,7 +166,7 @@
           "@type": "ListItem",
           "position": 4,
           "name": "Computational Bioengineering",
-          "description": "Winter 2025 · With Thomas Nowak.",
+          "description": "Winter 2025 · With Thomas Nowak and Mariapia D’Urso.",
           "url": "https://mfuegger.github.io/teaching.html#course-2025-winter-computational-bioengineering"
         },
         {
@@ -180,7 +180,7 @@
           "@type": "ListItem",
           "position": 6,
           "name": "Computational Bioengineering",
-          "description": "Winter 2024 · With Thomas Nowak.",
+          "description": "Winter 2024 · With Thomas Nowak and Mariapia D’Urso.",
           "url": "https://mfuegger.github.io/teaching.html#course-2024-winter-computational-bioengineering"
         },
         {
