@@ -118,6 +118,25 @@ def course_metadata(course, include_year=True):
     return ' · '.join(value for value in (date, course['details']) if value)
 
 
+
+def course_recording(course):
+    recording = course.get('recording')
+    if not recording:
+        return ''
+    if urlsplit(recording['url']).scheme != 'https':
+        raise ValueError('Course recordings must use HTTPS links.')
+    thumbnail = recording['thumbnail']
+    if urlsplit(thumbnail).scheme or urlsplit(thumbnail).netloc or not thumbnail.startswith('assets/'):
+        raise ValueError('Course recording thumbnails must be local assets.')
+    if not (ROOT / thumbnail).is_file():
+        raise ValueError('Missing course recording thumbnail: ' + thumbnail)
+    label = f"Watch {course['name']} {course['year']}: {recording['title']} on YouTube"
+    return render('course-recording.html',
+                  url=escape(recording['url'], quote=True), thumbnail=escape(thumbnail, quote=True),
+                  width=int(recording['width']), height=int(recording['height']),
+                  accessible_label=escape(label, quote=True), course_name=escape(course['name']),
+                  year=int(course['year']), title=escape(recording['title']))
+
 def notice_outputs(data):
     notices = json.loads((ROOT / 'content/notices.json').read_text(encoding='utf-8'))
     hosting = notices['hosting']
@@ -206,10 +225,14 @@ def teaching_outputs(data):
                 'teaching-course.html', id=course_id(course), name=escape(course['name']),
                 details=escape(course_metadata(course, include_year=False)),
                 course_link='<p class="paper-links">' + link(course['url'], 'Course website') + '</p>' if course.get('url') else '',
+                recording=nested(course_recording(course), 2),
             ))
             markdown.append(f'\n### {course["name"]}\n\n{course_metadata(course, include_year=False)}\n')
             if course.get('url'):
                 markdown.append(f'\n[Course website]({course["url"]})\n')
+            if course.get('recording'):
+                recording = course['recording']
+                markdown.append(f'\n[Recorded lectures — {recording["title"]}]({recording["url"]})\n')
         sections.append(render('teaching-year.html', year=year, courses=nested('\n'.join(rendered), 4)))
     structured = {
         '@context': 'https://schema.org', '@type': 'CollectionPage',
@@ -260,6 +283,8 @@ def homepage(data, selected, structured, doctoral):
         'group_roles': group_roles,
         'selected_papers': nested(selected, 10),
         'courses': nested(courses, 12),
+        'course_recording': nested(next((course_recording(course) for course in ordered_courses(data)
+                                         if course.get('recording')), ''), 10),
         'email': escape(data['email'], quote=True), 'contact_invitation': escape(data['contact']['invitation']),
         'address': '<br />'.join(escape(line) for line in data['contact']['address']),
     }

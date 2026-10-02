@@ -267,6 +267,42 @@ p {
   font-size: 0.9rem;
   color: var(--muted);
 }
+/* Static course previews link out; no third-party player is loaded. */
+.course-recording {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 1.25rem;
+  color: inherit;
+  text-decoration: none;
+}
+.course-recording img {
+  display: block;
+  width: 160px;
+  max-width: 40%;
+  height: auto;
+  border-radius: 3px;
+}
+.course-recording-caption {
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.course-recording-caption strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+.course-recording-action {
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+.course-recording:hover .course-recording-action {
+  text-decoration: underline;
+}
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

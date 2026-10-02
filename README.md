@@ -197,3 +197,26 @@ Initial content verified on 2 October 2026:
 The bibliography is preserved. Displayed author names normalize “Matthias Fugger”
 to “Matthias Függer”; other names and author order follow the source. No unverified
 telephone number, CV, award, or current vacancy is included.
+
+## Course recording previews
+
+To add a recording, add an optional `recording` object to the corresponding
+course in [content/profile.json](content/profile.json), under `teaching.courses`.
+For example:
+
+```json
+"recording": {
+  "title": "Lecture 1 — Introduction",
+  "url": "https://www.youtube.com/watch?v=AeclUJJ-wwY&list=PLLGPEjQmmA7DSruH84oHIanAXo44Bf4sI",
+  "thumbnail": "assets/course-compbioeng-2025.jpg",
+  "width": 1280,
+  "height": 720
+}
+```
+
+The image path points to a file in `assets/`; width and height are its actual pixel
+dimensions. The course archive shows the preview on that course. The homepage
+also shows the newest course with a recording, with its year clearly labelled.
+The full playlist link is preserved. The preview is a local image and a normal
+link: YouTube is contacted only after a visitor follows it. Recording metadata
+and links are included in the profile/course JSON and Markdown exports.

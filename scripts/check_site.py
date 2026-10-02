@@ -102,6 +102,17 @@ def main():
     for course in data['teaching']['courses']:
         assert course['name'] in teaching_visible and course['details'] in teaching_visible
         assert course['name'] in teaching_markdown and course['details'] in teaching_markdown
+        if course.get('recording'):
+            recording = course['recording']
+            assert recording['url'] in pages['teaching.html'].links
+            assert recording['thumbnail'] in pages['teaching.html'].assets
+            assert recording['url'] in teaching_markdown
+            assert recording['title'] in teaching_visible
+    newest_recording = next((course['recording'] for course in sorted(data['teaching']['courses'],
+                            key=lambda c: int(c['year']), reverse=True) if course.get('recording')), None)
+    if newest_recording:
+        assert newest_recording['url'] in homepage.links
+        assert newest_recording['thumbnail'] in homepage.assets
     assert 'Teaching archive on my institutional profile' not in visible
     assert 'archive_url' not in data['teaching']
     for page in pages.values():
