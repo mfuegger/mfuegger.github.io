@@ -32,7 +32,7 @@ No local build command is needed when editing on GitHub.
 For spacing within publications, software, courses, theses, and video captions,
 edit the `--item-*` CSS custom properties at the top of
 [assets/academic.css](assets/academic.css). They control title and detail line
-heights, the gaps after titles and details, the gap before links, and the space
+heights, a single `--item-gap` between titles, details, and links, and the space
 between archive entries. These components reuse the same values. Section spacing
 and ordinary prose have their own rules.
 

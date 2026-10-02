@@ -9,9 +9,7 @@
   /* Shared spacing for publications, software, courses, theses, and videos. */
   --item-title-line-height: 1.45;
   --item-line-height: 1.5;
-  --item-title-gap: 0.2rem;
-  --item-detail-gap: 0.12rem;
-  --item-links-gap: 0.25rem;
+  --item-gap: 0.25rem;
   --item-spacing: 1.3rem;
   color-scheme: light;
 }
@@ -198,7 +196,7 @@ p {
   font-size: 1.04rem;
   font-weight: 600;
   line-height: var(--item-title-line-height);
-  margin: 0 0 var(--item-title-gap);
+  margin: 0 0 var(--item-gap);
 }
 .paper-title a,
 .item-title a {
@@ -214,13 +212,13 @@ p {
 .item-detail {
   font-size: 0.9rem;
   color: var(--muted);
-  margin: 0 0 var(--item-detail-gap);
+  margin: 0 0 var(--item-gap);
   line-height: var(--item-line-height);
 }
 .venue,
 .item-meta {
   font-size: 0.9rem;
-  margin: 0 0 var(--item-links-gap);
+  margin: 0 0 var(--item-gap);
   line-height: var(--item-line-height);
 }
 .item-meta {
@@ -256,7 +254,7 @@ p {
 }
 .thesis h3 {
   font-size: 1rem;
-  margin: 0 0 var(--item-title-gap);
+  margin: 0 0 var(--item-gap);
   line-height: var(--item-title-line-height);
   font-weight: 600;
 }
@@ -282,7 +280,7 @@ p {
   display: block;
   font-weight: 500;
   line-height: var(--item-title-line-height);
-  margin-bottom: var(--item-title-gap);
+  margin-bottom: var(--item-gap);
 }
 .course-list span {
   display: block;
@@ -310,7 +308,7 @@ p {
 }
 .video-preview-caption {
   display: grid;
-  gap: var(--item-title-gap);
+  gap: var(--item-gap);
   font-size: 0.875rem;
   line-height: var(--item-line-height);
   color: var(--muted);
@@ -387,10 +385,10 @@ p {
   font-size: 1.04rem;
   font-weight: 500;
   line-height: var(--item-title-line-height);
-  margin: 0 0 var(--item-title-gap);
+  margin: 0 0 var(--item-gap);
 }
 .teaching-course .subtle {
-  margin: 0 0 var(--item-links-gap);
+  margin: 0 0 var(--item-gap);
   line-height: var(--item-line-height);
 }
 .teaching-courses li + li {
