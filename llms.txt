@@ -16,6 +16,7 @@ listed before publication.
 - [Full publication list](https://mfuegger.github.io/publications.html): All papers, by year.
 - [Publications in JSON](https://mfuegger.github.io/publications.json): Titles, authors, years, venues, status, links, and source BibTeX.
 - [BibTeX bibliography](https://mfuegger.github.io/publications.bib): Authoritative source entries.
+- [Last bibliography source check](https://mfuegger.github.io/bibliography-status.json): Check date and source checksum.
 
 ## Primary sources
 - [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)

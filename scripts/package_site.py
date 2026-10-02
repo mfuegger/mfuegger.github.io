@@ -9,6 +9,7 @@ OUTPUT.mkdir(exist_ok=True)
 for name in (
     'index.html', 'publications.html', 'publications.bib', 'publications.json',
     'profile.json', 'profile.md', 'llms.txt', 'robots.txt', 'sitemap.xml',
+    'bibliography-status.json',
     '.nojekyll', 'assets', 'habil', 'projects', 'css',
 ):
     source = ROOT / name

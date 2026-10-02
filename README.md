@@ -17,6 +17,8 @@ a framework, external web fonts, or a client-side rendering step.
 **Do not edit generated `index.html`, `publications.html`, `profile.json`,
 `profile.md`, `publications.json`, or `llms.txt`.** They are rebuilt from the
 source files above. All presentation styles for these pages live in CSS.
+`bibliography-status.json` is also generated; it records the last successful
+source check and its checksum.
 
 For example, add a course to `teaching.courses` in `content/profile.json`:
 
@@ -46,6 +48,8 @@ Maintain that source for routine bibliography updates. The build preserves autho
 order and publication status, including accepted/to-appear notes. An invalid or
 empty download, a loss of more than 20% of entries, or missing selected-paper keys
 stops the build before deployment. The previously deployed website remains live.
+Successful refreshes commit a dated check record even when the papers did not
+change, keeping the scheduled workflow active during quiet publication periods.
 
 If you prefer to maintain the bibliography exclusively in this repository, set
 `refresh_on_schedule` to `false` in `bibliography-source.json`. Then edit

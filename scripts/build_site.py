@@ -9,6 +9,8 @@ from urllib.parse import quote, urlsplit
 from string import Template
 from urllib.request import Request, urlopen
 import argparse
+from datetime import datetime, timezone
+import hashlib
 import json
 import re
 import bibtexparser
@@ -300,6 +302,12 @@ def main():
     }), encoding='utf-8')
     if refresh:
         (ROOT / 'publications.bib').write_text(bibliography, encoding='utf-8')
+        (ROOT / 'bibliography-status.json').write_text(json_text({
+            'source': source_config['url'],
+            'checked_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
+            'entries': len(entries),
+            'source_sha256': hashlib.sha256(bibliography.encode('utf-8')).hexdigest(),
+        }), encoding='utf-8')
     print(f'Rendered {len(entries)} publications across {len(years)} years; {len(selected_keys)} selected papers.')
 
 

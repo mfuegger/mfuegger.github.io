@@ -120,6 +120,7 @@ listed before publication.
 - [Full publication list]({SITE}publications.html): All papers, by year.
 - [Publications in JSON]({SITE}publications.json): Titles, authors, years, venues, status, links, and source BibTeX.
 - [BibTeX bibliography]({SITE}publications.bib): Authoritative source entries.
+- [Last bibliography source check]({SITE}bibliography-status.json): Check date and source checksum.
 
 ## Primary sources
 - [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)
