@@ -51,6 +51,12 @@ Journal of the ACM (JACM) · 2021
 
 [PDF](https://hal.science/hal-03408731/document) [DOI](https://doi.org/10.1145/3485242) [HAL](https://hal.science/hal-03408731)
 
+### Habilitation thesis
+
+[Computing at the border of abstractions: the power of timed, non-binary, distributed circuits](https://mfuegger.github.io/habil/thesis.pdf)
+
+Université Paris-Saclay · 2022 [PDF](https://mfuegger.github.io/habil/thesis.pdf) [Details](https://mfuegger.github.io/habil/)
+
 ## Software
 
 [MobsPy](https://github.com/ROBACON/mobspy)
@@ -60,14 +66,6 @@ A Python-based language for modeling biochemical reaction networks using meta-sp
 With Fabricio Cravo, Gayathri Prakash, and Thomas Nowak.
 
 [Source code](https://github.com/ROBACON/mobspy) [Paper](https://doi.org/10.1371/journal.pcbi.1013024)
-
-## Habilitation
-
-[Computing at the border of abstractions: the power of timed, non-binary, distributed circuits](https://mfuegger.github.io/habil/thesis.pdf)
-
-Université Paris-Saclay · 2022
-
-[Thesis PDF](https://mfuegger.github.io/habil/thesis.pdf) [Defense details](https://mfuegger.github.io/habil/)
 
 ## Recent courses
 

@@ -34,27 +34,25 @@
             <a href="publications.html">All publications</a>
           </div>
           $selected_papers
+          <div class="thesis" id="habilitation">
+            <h3>Habilitation thesis</h3>
+            <p class="paper-title thesis-title"><a href="$thesis_pdf_url">$thesis_title</a></p>
+            <div class="paper-links">
+              <span>$thesis_institution · $thesis_year</span>
+              <a href="$thesis_pdf_url">PDF</a>
+              <a href="$thesis_details_url">Details</a>
+            </div>
+          </div>
         </section>
-        <section class="section two-column" aria-label="Software and thesis">
-          <div id="software">
-            <h2 class="section-title">Software</h2>
-            <p><a href="$software_url"><strong>$software_name</strong></a></p>
-            <p class="subtle">$software_description</p>
-            <p class="subtle">$software_collaborators</p>
-            <p class="paper-links">
-              <a href="$software_url">Source code</a>
-              <a href="$software_paper_url">Paper</a>
-            </p>
-          </div>
-          <div>
-            <h2 class="section-title">Habilitation</h2>
-            <p><a href="$thesis_pdf_url">$thesis_title</a></p>
-            <p class="subtle">$thesis_institution · $thesis_year</p>
-            <p class="paper-links">
-              <a href="$thesis_pdf_url">Thesis PDF</a>
-              <a href="$thesis_details_url">Defense details</a>
-            </p>
-          </div>
+        <section id="software" class="section" aria-labelledby="software-title">
+          <h2 class="section-title" id="software-title">Software</h2>
+          <p><a href="$software_url"><strong>$software_name</strong></a></p>
+          <p class="subtle">$software_description</p>
+          <p class="subtle">$software_collaborators</p>
+          <p class="paper-links">
+            <a href="$software_url">Source code</a>
+            <a href="$software_paper_url">Paper</a>
+          </p>
         </section>
         <section id="teaching" class="section" aria-labelledby="teaching-title">
           <div class="section-heading">
