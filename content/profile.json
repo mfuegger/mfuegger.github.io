@@ -2,6 +2,7 @@
   "name": "Matthias Függer",
   "alternate_names": ["Matthias Fugger"],
   "role": "Research Director, CNRS",
+  "affiliation_label": "CNRS / LMF",
   "employer": { "name": "CNRS", "url": "https://www.cnrs.fr/" },
   "description": "I work on the systematic engineering of robust microbial systems, combining experiments, modeling, numerical simulation, AI, and mathematical analysis.",
   "affiliations": [
@@ -18,6 +19,7 @@
     { "label": "Institutional profile", "url": "https://home.lmf.cnrs.fr/MatthiasFuegger/" }
   ],
   "research": {
+    "group_context": "at LMF",
     "description": "My work spans microbial systems, distributed algorithms, and digital circuits. In microbial systems, I study applications in bioproduction, diagnosis, and medical treatment.",
     "topics": [
       { "name": "Microbial systems", "description": "Distributed biocomputation, biochemical reaction networks, and computational tools for modeling biological systems." },

@@ -5,6 +5,7 @@
     "Matthias Fugger"
   ],
   "role": "Research Director, CNRS",
+  "affiliation_label": "CNRS / LMF",
   "employer": {
     "name": "CNRS",
     "url": "https://www.cnrs.fr/"
@@ -45,6 +46,7 @@
     }
   ],
   "research": {
+    "group_context": "at LMF",
     "description": "My work spans microbial systems, distributed algorithms, and digital circuits. In microbial systems, I study applications in bioproduction, diagnosis, and medical treatment.",
     "topics": [
       {

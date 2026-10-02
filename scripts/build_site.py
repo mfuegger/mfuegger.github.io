@@ -51,7 +51,7 @@ def common_layout(data, publications=False):
             publications_current=' aria-current="page"' if publications else '',
             anchor_prefix='./' if publications else '',
         ), 6),
-        'footer': nested(render('footer.html', name=escape(data['name'])), 6),
+        'footer': nested(render('footer.html', name=escape(data['name']), affiliation_label=escape(data['affiliation_label'])), 6),
     }
 
 
@@ -69,7 +69,7 @@ def head(data, structured, publications=False):
         'head.html',
         name=escape(data['name']),
         portrait_url='https://mfuegger.github.io/' + escape(data['portrait'], quote=True),
-        page_title=escape('Publications — ' + data['name'] if publications else data['name'] + ' — CNRS · LMF'),
+        page_title=escape('Publications — ' + data['name'] if publications else data['name'] + ' — ' + data['affiliation_label'].replace(' / ', ' · ')),
         description=escape('Publications by ' + data['name'] + ' and collaborators, with papers, preprints, and BibTeX citations.' if publications else data['name'] + ', ' + data['role'] + '. ' + data['description']),
         canonical='https://mfuegger.github.io/' + ('publications.html' if publications else ''),
         alternates=nested(alternate_links, 2),
@@ -80,7 +80,7 @@ def head(data, structured, publications=False):
 def homepage(data, selected, structured):
     affiliations = data['affiliations']
     affiliation_html = link(affiliations[0]['url'], affiliations[0]['name']) + '<br />' + ' · '.join(escape(item['name']) for item in affiliations[1:])
-    group_roles = 'I am ' + ' and '.join(escape(group['role']) + ' of the ' + link(group['url'], group['name']) for group in data['research']['groups']) + ' at LMF.'
+    group_roles = 'I am ' + ' and '.join(escape(group['role']) + ' of the ' + link(group['url'], group['name']) for group in data['research']['groups']) + ' ' + escape(data['research']['group_context']) + '.'
     topics = '\n'.join(render('topic.html', **{key: escape(value) for key, value in topic.items()}) for topic in data['research']['topics'])
     courses = '\n'.join(render('course.html', **{key: escape(value) for key, value in course.items()}) for course in data['teaching']['courses'])
     values = {
