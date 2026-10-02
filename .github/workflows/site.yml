@@ -49,7 +49,7 @@ jobs:
           python scripts/check_site.py
       - name: Save regenerated files when changed
         run: |
-          git add index.html publications.html publications.bib publications.json profile.json profile.md llms.txt bibliography-status.json
+          git add index.html publications.html publications.bib publications.json profile.json profile.md llms.txt bibliography-status.json teaching.html teaching.json teaching.md
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'

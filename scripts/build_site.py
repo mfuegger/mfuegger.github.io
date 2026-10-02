@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import re
+import unicodedata
 import bibtexparser
 from pylatexenc.latex2text import LatexNodes2Text
 from build_agent_data import json_text, profile_outputs, structured_script
@@ -43,24 +44,38 @@ def link(value, label):
     return f'<a href="{escape(value, quote=True)}">{escape(label)}</a>'
 
 
-def common_layout(data, publications=False):
+def common_layout(data, page='home'):
     return {
         'header': nested(render(
             'header.html', name=escape(data['name']),
-            home_current='' if publications else ' aria-current="page"',
-            publications_current=' aria-current="page"' if publications else '',
-            anchor_prefix='./' if publications else '',
+            home_current=' aria-current="page"' if page == 'home' else '',
+            publications_current=' aria-current="page"' if page == 'publications' else '',
+            teaching_current=' aria-current="page"' if page == 'teaching' else '',
+            anchor_prefix='' if page == 'home' else './',
         ), 6),
         'footer': nested(render('footer.html', name=escape(data['name']), affiliation_label=escape(data['affiliation_label'])), 6),
     }
 
 
-def head(data, structured, publications=False):
+def head(data, structured, page='home'):
+    titles = {
+        'home': data['name'] + ' — ' + data['affiliation_label'].replace(' / ', ' · '),
+        'publications': 'Publications — ' + data['name'],
+        'teaching': 'Teaching — ' + data['name'],
+    }
+    descriptions = {
+        'home': data['name'] + ', ' + data['role'] + '. ' + data['description'],
+        'publications': 'Publications by ' + data['name'] + ' and collaborators, with papers, preprints, and BibTeX citations.',
+        'teaching': 'Teaching by ' + data['name'] + ': courses and guest lectures, with the complete archive by year.',
+    }
     alternatives = [
-        ('application/json', 'publications.json' if publications else 'profile.json', 'Structured data'),
-        ('application/x-bibtex', 'publications.bib', 'BibTeX bibliography') if publications else
+        ('application/json', 'publications.json' if page == 'publications' else 'profile.json', 'Structured data'),
+        ('application/x-bibtex', 'publications.bib', 'BibTeX bibliography') if page == 'publications' else
         ('text/markdown', 'profile.md', 'Profile in Markdown'),
     ]
+    if page == 'teaching':
+        alternatives = [('application/json', 'teaching.json', 'Teaching data'),
+                        ('text/markdown', 'teaching.md', 'Teaching in Markdown')]
     alternate_links = '\n'.join(
         f'<link rel="alternate" type="{kind}" href="{path}" title="{title}" />'
         for kind, path, title in alternatives
@@ -69,12 +84,67 @@ def head(data, structured, publications=False):
         'head.html',
         name=escape(data['name']),
         portrait_url='https://mfuegger.github.io/' + escape(data['portrait'], quote=True),
-        page_title=escape('Publications — ' + data['name'] if publications else data['name'] + ' — ' + data['affiliation_label'].replace(' / ', ' · ')),
-        description=escape('Publications by ' + data['name'] + ' and collaborators, with papers, preprints, and BibTeX citations.' if publications else data['name'] + ', ' + data['role'] + '. ' + data['description']),
-        canonical='https://mfuegger.github.io/' + ('publications.html' if publications else ''),
+        page_title=escape(titles[page]),
+        description=escape(descriptions[page]),
+        canonical='https://mfuegger.github.io/' + (page + '.html' if page != 'home' else ''),
         alternates=nested(alternate_links, 2),
         structured_data=nested(structured_script(structured), 4),
     ), 2)
+
+
+def ordered_courses(data):
+    return sorted(data['teaching']['courses'], key=lambda course: int(course['year']), reverse=True)
+
+
+def course_id(course):
+    name = unicodedata.normalize('NFKD', course['name']).encode('ascii', 'ignore').decode().lower()
+    slug = re.sub(r'[^a-z0-9]+', '-', name).strip('-')
+    return f'course-{course["year"]}-{course["term"].lower()}-{slug}'
+
+
+def teaching_outputs(data):
+    courses = ordered_courses(data)
+    ids = [course_id(course) for course in courses]
+    if len(ids) != len(set(ids)):
+        raise ValueError('Teaching records contain duplicate course/year/term combinations.')
+    years = sorted({int(course['year']) for course in courses}, reverse=True)
+    sections = []
+    markdown = [f'# Teaching — {data["name"]}\n\nCourses and guest lectures, listed by year.\n']
+    for year in years:
+        rendered = []
+        markdown.append(f'\n## {year}\n')
+        for course in (item for item in courses if int(item['year']) == year):
+            rendered.append(render(
+                'teaching-course.html', id=course_id(course), name=escape(course['name']),
+                term=escape(course['term']), details=escape(course['details']),
+                course_link='<p class="paper-links">' + link(course['url'], 'Course website') + '</p>' if course.get('url') else '',
+            ))
+            markdown.append(f'\n### {course["name"]}\n\n{course["term"]} · {course["details"]}\n')
+            if course.get('url'):
+                markdown.append(f'\n[Course website]({course["url"]})\n')
+        sections.append(render('teaching-year.html', year=year, courses=nested('\n'.join(rendered), 4)))
+    structured = {
+        '@context': 'https://schema.org', '@type': 'CollectionPage',
+        'name': 'Teaching — ' + data['name'],
+        'url': 'https://mfuegger.github.io/teaching.html',
+        'about': {'@id': 'https://mfuegger.github.io/#person'},
+        'mainEntity': {
+            '@type': 'ItemList', 'numberOfItems': len(courses),
+            'itemListElement': [
+                {'@type': 'ListItem', 'position': i + 1, 'name': course['name'],
+                 'description': f'{course["term"]} {course["year"]} · {course["details"]}',
+                 'url': 'https://mfuegger.github.io/teaching.html#' + course_id(course)}
+                for i, course in enumerate(courses)
+            ],
+        },
+    }
+    page = render(
+        'teaching.html', head=head(data, structured, page='teaching'),
+        **common_layout(data, page='teaching'),
+        year_links=nested('\n'.join(f'<a href="#year-{year}">{year}</a>' for year in years), 12),
+        sections=nested('\n'.join(sections), 8),
+    ) + '\n'
+    return page, {'teacher': data['name'], 'courses': courses, 'schemaOrg': structured}, ''.join(markdown)
 
 
 def homepage(data, selected, structured):
@@ -82,7 +152,9 @@ def homepage(data, selected, structured):
     affiliation_html = link(affiliations[0]['url'], affiliations[0]['name']) + '<br />' + ' · '.join(escape(item['name']) for item in affiliations[1:])
     group_roles = 'I am ' + ' and '.join(escape(group['role']) + ' of the ' + link(group['url'], group['name']) for group in data['research']['groups']) + ' ' + escape(data['research']['group_context']) + '.'
     topics = '\n'.join(render('topic.html', **{key: escape(value) for key, value in topic.items()}) for topic in data['research']['topics'])
-    courses = '\n'.join(render('course.html', **{key: escape(value) for key, value in course.items()}) for course in data['teaching']['courses'])
+    courses = '\n'.join(render('course.html', name=link('teaching.html#' + course_id(course), course['name']),
+                              details=escape(f'{course["term"]} {course["year"]} · {course["details"]}'))
+                        for course in ordered_courses(data)[:2])
     values = {
         'head': head(data, structured),
         **common_layout(data),
@@ -93,7 +165,7 @@ def homepage(data, selected, structured):
         'research_description': escape(data['research']['description']),
         'topics': nested(topics, 12), 'group_roles': group_roles,
         'selected_papers': nested(selected, 10),
-        'courses': nested(courses, 12), 'teaching_archive_url': escape(data['teaching']['archive_url'], quote=True),
+        'courses': nested(courses, 12),
         'email': escape(data['email'], quote=True), 'contact_invitation': escape(data['contact']['invitation']),
         'address': '<br />'.join(escape(line) for line in data['contact']['address']),
     }
@@ -284,13 +356,17 @@ def main():
         'publications.html',
         year_links=nested(year_links, 12),
         sections=nested('\n'.join(sections), 8),
-        head=head(data, structured, publications=True),
-        **common_layout(data, publications=True),
+        head=head(data, structured, page='publications'),
+        **common_layout(data, page='publications'),
     ) + '\n'
 
-    # Render and validate everything before writing either output.
+    teaching_page, teaching_data, teaching_markdown = teaching_outputs(data)
+    # Render and validate everything before writing the outputs.
     (ROOT / 'index.html').write_text(rendered_homepage, encoding='utf-8')
     (ROOT / 'publications.html').write_text(page, encoding='utf-8')
+    (ROOT / 'teaching.html').write_text(teaching_page, encoding='utf-8')
+    (ROOT / 'teaching.json').write_text(json_text(teaching_data), encoding='utf-8')
+    (ROOT / 'teaching.md').write_text(teaching_markdown, encoding='utf-8')
     (ROOT / 'profile.json').write_text(json_text({
         'url': 'https://mfuegger.github.io/', **data, 'schemaOrg': profile,
     }), encoding='utf-8')

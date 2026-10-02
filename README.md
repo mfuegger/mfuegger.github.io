@@ -15,7 +15,7 @@ a framework, external web fonts, or a client-side rendering step.
 | Bibliography refresh source and schedule toggle | `bibliography-source.json` |
 
 **Do not edit generated `index.html`, `publications.html`, `profile.json`,
-`profile.md`, `publications.json`, or `llms.txt`.** They are rebuilt from the
+`profile.md`, `publications.json`, `teaching.html`, `teaching.json`, `teaching.md`, or `llms.txt`.** They are rebuilt from the
 source files above. All presentation styles for these pages live in CSS.
 `bibliography-status.json` is also generated; it records the last successful
 source check and its checksum.
@@ -24,8 +24,11 @@ For example, add a course to `teaching.courses` in `content/profile.json`:
 
 ```json
 {
+  "year": 2026,
+  "term": "Winter",
   "name": "Course title",
-  "details": "Term and year · Institution · Collaborators"
+  "details": "Institution · Collaborators",
+  "url": "https://example.org/course"
 }
 ```
 
@@ -33,6 +36,15 @@ Replace the example with accurate information; do not publish placeholder course
 JSON uses double quotes and requires commas between array entries, without a
 trailing comma after the final entry. Edit the source directly on GitHub:
 committing to `main` rebuilds, checks, and publishes the site automatically.
+
+The teaching archive lives entirely at `teaching.html`. Its 17 initial records
+were imported from the institutional profile's 2015–2025 archive. Maintain all
+records under `teaching.courses`; no teaching data is fetched from the institutional
+page during builds. `year`, `term`, `name`, and `details` are required; `url` is
+optional. The homepage automatically shows the two most recent records and links
+to the full archive. All pages share the same Teaching navigation link.
+Names and typography were normalized (including Christoph Lenzen and French
+accents); dates, collaborators, lecture durations, and course URLs follow the source.
 
 ## Automatic bibliography and publishing
 
@@ -98,6 +110,7 @@ The build generates all outputs from the same source data:
 - `profile.md` containing the readable homepage content with absolute links.
 - `publications.json` containing every paper's title, ordered author list, year,
   venue, status note, identifiers, links, and original BibTeX.
+- `teaching.json` and `teaching.md`, the complete teaching archive from the same source.
 - `llms.txt`, a convenience index for agents; this is an emerging convention,
   not a guarantee that agents or Google will use it.
 - `robots.txt` allowing crawlers and announcing `sitemap.xml`.

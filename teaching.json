@@ -1,0 +1,248 @@
+{
+  "teacher": "Matthias Függer",
+  "courses": [
+    {
+      "year": 2025,
+      "term": "Winter",
+      "name": "Computational Bioengineering",
+      "details": "With Thomas Nowak.",
+      "url": "https://compbioeng.biodis.co"
+    },
+    {
+      "year": 2025,
+      "term": "Winter",
+      "name": "Initiation à la recherche",
+      "details": "ENS Paris-Saclay · With Thomas Nowak."
+    },
+    {
+      "year": 2024,
+      "term": "Winter",
+      "name": "Computational Bioengineering",
+      "details": "With Thomas Nowak.",
+      "url": "https://compbioeng.biodis.co"
+    },
+    {
+      "year": 2024,
+      "term": "Winter",
+      "name": "Initiation à la recherche",
+      "details": "Distributed synthetic microbiology, 2h · ENS Paris-Saclay · With Thomas Nowak.",
+      "url": "https://wikimpri.dptinfo.ens-cachan.fr/doku.php?id=cours:c-1-36"
+    },
+    {
+      "year": 2022,
+      "term": "Winter",
+      "name": "Initiation à la recherche",
+      "details": "Distributed synthetic microbiology, 2h · ENS Paris-Saclay · With Thomas Nowak."
+    },
+    {
+      "year": 2021,
+      "term": "Winter",
+      "name": "Initiation à la recherche",
+      "details": "Distributed synthetic microbiology, 2h · ENS Paris-Saclay."
+    },
+    {
+      "year": 2021,
+      "term": "Winter",
+      "name": "Natural algorithms",
+      "details": "With Thomas Nowak."
+    },
+    {
+      "year": 2021,
+      "term": "Winter",
+      "name": "Metastability-containing Synchronization Circuits",
+      "details": "CISPA, Germany · With Christoph Lenzen, Danny Dolev, Moti Medina, Ian W. Jones, and Johannes Bund.",
+      "url": "https://cms.cispa.saarland/mcsc/"
+    },
+    {
+      "year": 2021,
+      "term": "Summer",
+      "name": "Clock Synchronization and Adversarial Fault Tolerance",
+      "details": "MSc level · Remote lecture, 4h · MPI-INF · With Christoph Lenzen and Danny Dolev.",
+      "url": "https://www.mpi-inf.mpg.de/departments/algorithms-complexity/teaching/summer21/clock-synchronization-and-adversarial-fault-tolerance"
+    },
+    {
+      "year": 2020,
+      "term": "Winter",
+      "name": "Initiation à la recherche",
+      "details": "Distributed synthetic microbiology, 2h · ENS Paris-Saclay."
+    },
+    {
+      "year": 2020,
+      "term": "Winter",
+      "name": "How To Clock Your Computer",
+      "details": "MSc level · Remote lecture, 4h · MPI-INF · With Christoph Lenzen, Moti Medina, Andreas Steininger, Danny Dolev, Ian Jones, and Milos Krstic.",
+      "url": "https://www.mpi-inf.mpg.de/departments/algorithms-complexity/teaching/winter20/how-to-clock-your-computer"
+    },
+    {
+      "year": 2019,
+      "term": "Winter",
+      "name": "Initiation à la recherche",
+      "details": "Distributed synthetic microbiology, 2h · ENS Paris-Saclay."
+    },
+    {
+      "year": 2019,
+      "term": "Winter",
+      "name": "Distributed Computing with Bacteria",
+      "details": "Guest lecture · MPI-INF."
+    },
+    {
+      "year": 2018,
+      "term": "Winter",
+      "name": "Initiation à la recherche",
+      "details": "Distributed Biology, 2h · ENS Paris-Saclay."
+    },
+    {
+      "year": 2018,
+      "term": "Winter",
+      "name": "Link Reversal Algorithms",
+      "details": "Guest lecture · MPI-INF."
+    },
+    {
+      "year": 2017,
+      "term": "Winter",
+      "name": "Initiation à la recherche",
+      "details": "Opinion Dynamics, 2h · ENS Paris-Saclay."
+    },
+    {
+      "year": 2015,
+      "term": "Summer",
+      "name": "Beyond Classical Circuit Design",
+      "details": "MPI-INF.",
+      "url": "http://resources.mpi-inf.mpg.de/departments/d1/teaching/ss15/ChipDesign/"
+    }
+  ],
+  "schemaOrg": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Teaching — Matthias Függer",
+    "url": "https://mfuegger.github.io/teaching.html",
+    "about": {
+      "@id": "https://mfuegger.github.io/#person"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": 17,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Computational Bioengineering",
+          "description": "Winter 2025 · With Thomas Nowak.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2025-winter-computational-bioengineering"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Initiation à la recherche",
+          "description": "Winter 2025 · ENS Paris-Saclay · With Thomas Nowak.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2025-winter-initiation-a-la-recherche"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Computational Bioengineering",
+          "description": "Winter 2024 · With Thomas Nowak.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2024-winter-computational-bioengineering"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Initiation à la recherche",
+          "description": "Winter 2024 · Distributed synthetic microbiology, 2h · ENS Paris-Saclay · With Thomas Nowak.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2024-winter-initiation-a-la-recherche"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Initiation à la recherche",
+          "description": "Winter 2022 · Distributed synthetic microbiology, 2h · ENS Paris-Saclay · With Thomas Nowak.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2022-winter-initiation-a-la-recherche"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Initiation à la recherche",
+          "description": "Winter 2021 · Distributed synthetic microbiology, 2h · ENS Paris-Saclay.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2021-winter-initiation-a-la-recherche"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Natural algorithms",
+          "description": "Winter 2021 · With Thomas Nowak.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2021-winter-natural-algorithms"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Metastability-containing Synchronization Circuits",
+          "description": "Winter 2021 · CISPA, Germany · With Christoph Lenzen, Danny Dolev, Moti Medina, Ian W. Jones, and Johannes Bund.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2021-winter-metastability-containing-synchronization-circuits"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "Clock Synchronization and Adversarial Fault Tolerance",
+          "description": "Summer 2021 · MSc level · Remote lecture, 4h · MPI-INF · With Christoph Lenzen and Danny Dolev.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2021-summer-clock-synchronization-and-adversarial-fault-tolerance"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "Initiation à la recherche",
+          "description": "Winter 2020 · Distributed synthetic microbiology, 2h · ENS Paris-Saclay.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2020-winter-initiation-a-la-recherche"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "How To Clock Your Computer",
+          "description": "Winter 2020 · MSc level · Remote lecture, 4h · MPI-INF · With Christoph Lenzen, Moti Medina, Andreas Steininger, Danny Dolev, Ian Jones, and Milos Krstic.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2020-winter-how-to-clock-your-computer"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "Initiation à la recherche",
+          "description": "Winter 2019 · Distributed synthetic microbiology, 2h · ENS Paris-Saclay.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2019-winter-initiation-a-la-recherche"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "Distributed Computing with Bacteria",
+          "description": "Winter 2019 · Guest lecture · MPI-INF.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2019-winter-distributed-computing-with-bacteria"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "name": "Initiation à la recherche",
+          "description": "Winter 2018 · Distributed Biology, 2h · ENS Paris-Saclay.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2018-winter-initiation-a-la-recherche"
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "name": "Link Reversal Algorithms",
+          "description": "Winter 2018 · Guest lecture · MPI-INF.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2018-winter-link-reversal-algorithms"
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "name": "Initiation à la recherche",
+          "description": "Winter 2017 · Opinion Dynamics, 2h · ENS Paris-Saclay.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2017-winter-initiation-a-la-recherche"
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "name": "Beyond Classical Circuit Design",
+          "description": "Summer 2015 · MPI-INF.",
+          "url": "https://mfuegger.github.io/teaching.html#course-2015-summer-beyond-classical-circuit-design"
+        }
+      ]
+    }
+  }
+}

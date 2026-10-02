@@ -68,10 +68,11 @@ def main():
     for key, value in data.items():
         assert profile_data[key] == value, f'Profile data drift: {key}'
     machine = json.loads((ROOT / 'publications.json').read_text(encoding='utf-8'))
+    teaching = json.loads((ROOT / 'teaching.json').read_text(encoding='utf-8'))
     library = bibtexparser.parse_file(str(ROOT / 'publications.bib'))
     assert not library.failed_blocks
     entries = {entry.key: entry for entry in library.entries}
-    pages = {name: Page(ROOT / name) for name in ('index.html', 'publications.html')}
+    pages = {name: Page(ROOT / name) for name in ('index.html', 'publications.html', 'teaching.html')}
     homepage = pages['index.html']
     publication_page = pages['publications.html']
     assert person['name'] == data['name'] and person['email'] == data['email']
@@ -79,9 +80,25 @@ def main():
     assert person['worksFor']['name'] == data['employer']['name']
     visible = ' '.join(''.join(homepage.text).split())
     markdown = (ROOT / 'profile.md').read_text(encoding='utf-8')
-    for course in data['teaching']['courses']:
+    for course in sorted(data['teaching']['courses'], key=lambda c: int(c['year']), reverse=True)[:2]:
         assert course['name'] in visible and course['details'] in visible
         assert course['name'] in markdown and course['details'] in markdown
+    teaching_visible = ' '.join(''.join(pages['teaching.html'].text).split())
+    teaching_markdown = (ROOT / 'teaching.md').read_text(encoding='utf-8')
+    assert teaching['courses'] == sorted(data['teaching']['courses'], key=lambda c: int(c['year']), reverse=True)
+    assert len([id for id in pages['teaching.html'].ids if id.startswith('course-')]) == len(teaching['courses'])
+    for course in data['teaching']['courses']:
+        assert course['name'] in teaching_visible and course['details'] in teaching_visible
+        assert course['name'] in teaching_markdown and course['details'] in teaching_markdown
+    assert 'Teaching archive on my institutional profile' not in visible
+    assert 'archive_url' not in data['teaching']
+    for page in pages.values():
+        assert 'teaching.html' in page.links
+    assert json.loads(pages['teaching.html'].json_texts[0]) == teaching['schemaOrg']
+    assert teaching['schemaOrg']['mainEntity']['numberOfItems'] == len(teaching['courses'])
+    for item in teaching['schemaOrg']['mainEntity']['itemListElement']:
+        assert urlsplit(item['url']).fragment in pages['teaching.html'].ids
+    assert 'https://mfuegger.github.io/teaching.html' in (ROOT / 'sitemap.xml').read_text()
     assert machine['count'] == len(entries) == len(publication_page.papers)
     assert set(publication_page.papers) == set(entries)
     assert len(machine['publications']) == len(entries)
@@ -114,7 +131,7 @@ def main():
     for item in structured['itemListElement']:
         assert unquote(urlsplit(item['item']['@id']).fragment) in publication_page.ids
     assert 'Disallow: /' not in (ROOT / 'robots.txt').read_text()
-    print(f'Checked profile consistency, {len(entries)} exact BibTeX citations, selected papers, JSON-LD, and local links.')
+    print(f'Checked profile consistency, {len(entries)} exact BibTeX citations, {len(teaching["courses"])} teaching entries, JSON-LD, and local links.')
 
 
 if __name__ == '__main__':

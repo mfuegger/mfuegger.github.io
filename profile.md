@@ -81,13 +81,13 @@ Université Paris-Saclay · 2022
 
 [Thesis PDF](https://mfuegger.github.io/habil/thesis.pdf) [Defense details](https://mfuegger.github.io/habil/)
 
-## Teaching
+## Recent teaching
 
-- Computational Bioengineering — Winter 2024 and 2025 · With Thomas Nowak
+[All teaching](https://mfuegger.github.io/teaching.html)
 
-- Initiation à la recherche — Winter 2024 and 2025 · ENS Paris-Saclay · With Thomas Nowak
+- [Computational Bioengineering](https://mfuegger.github.io/teaching.html#course-2025-winter-computational-bioengineering) — Winter 2025 · With Thomas Nowak.
 
-[Teaching archive on my institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)
+- [Initiation à la recherche](https://mfuegger.github.io/teaching.html#course-2025-winter-initiation-a-la-recherche) — Winter 2025 · ENS Paris-Saclay · With Thomas Nowak.
 
 ## Contact
 

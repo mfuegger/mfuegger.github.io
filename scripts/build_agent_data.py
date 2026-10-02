@@ -122,6 +122,11 @@ listed before publication.
 - [BibTeX bibliography]({SITE}publications.bib): Authoritative source entries.
 - [Last bibliography source check]({SITE}bibliography-status.json): Check date and source checksum.
 
+## Teaching
+- [Full teaching archive]({SITE}teaching.html): Courses and guest lectures by year.
+- [Teaching in JSON]({SITE}teaching.json): Complete teaching records from the editable profile data.
+- [Teaching in Markdown]({SITE}teaching.md): Readable course archive with links.
+
 ## Primary sources
 - [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)
 - [Institutional bibliography](https://home.lmf.cnrs.fr/downloads/MatthiasFuegger/mf.bib)
