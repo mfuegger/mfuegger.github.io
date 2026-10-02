@@ -197,6 +197,11 @@
       "91190 Gif-sur-Yvette, France"
     ]
   },
+  "doctoral_thesis": {
+    "bibliography_key": "fuegger:2010",
+    "institution": "TU Wien",
+    "details_url": "https://repositum.tuwien.at/handle/20.500.12708/14747"
+  },
   "schemaOrg": {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -241,5 +246,24 @@
       "url": "https://www.cnrs.fr/"
     },
     "email": "mfuegger@lmf.cnrs.fr"
-  }
+  },
+  "theses": [
+    {
+      "label": "Habilitation thesis",
+      "title": "Computing at the border of abstractions: the power of timed, non-binary, distributed circuits",
+      "institution": "Université Paris-Saclay",
+      "year": 2022,
+      "pdf_url": "habil/thesis.pdf",
+      "details_url": "habil/"
+    },
+    {
+      "label": "PhD thesis",
+      "bibliography_key": "fuegger:2010",
+      "title": "Analysis of On-Chip Fault-Tolerant Distributed Algorithms",
+      "institution": "TU Wien",
+      "year": 2010,
+      "pdf_url": "https://repositum.tuwien.at/bitstream/20.500.12708/14747/2/Fuegger%20Matthias%20-%202010%20-%20Analysis%20of%20on-chip%20fault-tolerant%20distributed...pdf",
+      "details_url": "https://repositum.tuwien.at/handle/20.500.12708/14747"
+    }
+  ]
 }

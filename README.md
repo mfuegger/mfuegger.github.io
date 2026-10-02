@@ -24,6 +24,12 @@ The homepage Research section uses `description` for the current focus and
 `research.description` for the additional research areas. Group roles remain in
 `research.groups`; the visible text and machine-readable exports share this source.
 
+The compact thesis entries follow the selected publications. Edit the habilitation
+in `habilitation`. The PhD entry uses `doctoral_thesis.bibliography_key` to derive
+its title, year, and PDF link from `publications.bib`; its display institution and
+repository details link are in `doctoral_thesis`. Both entries are exported in
+`profile.json` under `theses` and in `profile.md`.
+
 For example, add a course to `teaching.courses` in `content/profile.json`:
 
 ```json

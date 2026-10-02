@@ -228,10 +228,13 @@ p {
   font-size: 0.875rem;
 }
 
-/* Secondary research resource below the selected papers */
+/* Theses below the selected papers */
 .thesis {
   padding-top: 1.3rem;
   border-top: 1px solid var(--line);
+}
+.thesis + .thesis {
+  margin-top: 1.3rem;
 }
 .thesis h3 {
   font-size: 1rem;

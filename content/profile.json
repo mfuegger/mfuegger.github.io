@@ -195,5 +195,10 @@
       "4 avenue des Sciences",
       "91190 Gif-sur-Yvette, France"
     ]
+  },
+  "doctoral_thesis": {
+    "bibliography_key": "fuegger:2010",
+    "institution": "TU Wien",
+    "details_url": "https://repositum.tuwien.at/handle/20.500.12708/14747"
   }
 }

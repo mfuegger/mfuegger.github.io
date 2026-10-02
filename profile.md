@@ -89,6 +89,12 @@ IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems ·
 
 Université Paris-Saclay · 2022 [PDF](https://mfuegger.github.io/habil/thesis.pdf) [Details](https://mfuegger.github.io/habil/)
 
+### PhD thesis
+
+[Analysis of On-Chip Fault-Tolerant Distributed Algorithms](https://repositum.tuwien.at/bitstream/20.500.12708/14747/2/Fuegger%20Matthias%20-%202010%20-%20Analysis%20of%20on-chip%20fault-tolerant%20distributed...pdf)
+
+TU Wien · 2010 [PDF](https://repositum.tuwien.at/bitstream/20.500.12708/14747/2/Fuegger%20Matthias%20-%202010%20-%20Analysis%20of%20on-chip%20fault-tolerant%20distributed...pdf) [Details](https://repositum.tuwien.at/handle/20.500.12708/14747)
+
 ## Software
 
 [MobsPy](https://github.com/ROBACON/mobspy)

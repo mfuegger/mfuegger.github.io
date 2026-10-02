@@ -147,7 +147,7 @@ def teaching_outputs(data):
     return page, {'teacher': data['name'], 'courses': courses, 'schemaOrg': structured}, ''.join(markdown)
 
 
-def homepage(data, selected, structured):
+def homepage(data, selected, structured, doctoral):
     affiliations = data['affiliations']
     affiliation_html = link(affiliations[0]['url'], affiliations[0]['name']) + '<br />' + ' · '.join(escape(item['name']) for item in affiliations[1:])
     group_roles = 'I am ' + ' and '.join(escape(group['role']) + ' of the ' + link(group['url'], group['name']) for group in data['research']['groups']) + ' ' + escape(data['research']['group_context']) + '.'
@@ -170,6 +170,7 @@ def homepage(data, selected, structured):
     }
     values.update({'software_' + key: escape(str(value), quote=True) for key, value in data['software'].items()})
     values.update({'thesis_' + key: escape(str(value), quote=True) for key, value in data['habilitation'].items()})
+    values.update({'doctoral_' + key: escape(str(value), quote=True) for key, value in doctoral.items()})
     return render('index.html', **values) + '\n'
 
 
@@ -298,13 +299,29 @@ def main():
     selected_papers = '\n'.join(paper(by_key[key]) for key in selected_keys)
     selected = '<ul class="papers">\n  ' + nested(selected_papers, 2) + '\n</ul>'
     data = json.loads((ROOT / 'content/profile.json').read_text(encoding='utf-8'))
-    initial_homepage = homepage(data, selected, {})
+    doctoral_config = data['doctoral_thesis']
+    doctoral_entry = by_key[doctoral_config['bibliography_key']]
+    if doctoral_entry.entry_type != 'phdthesis':
+        raise ValueError('The doctoral thesis must reference a PhD thesis bibliography entry.')
+    doctoral_fields = fields(doctoral_entry)
+    doctoral = {
+        'bibliography_key': doctoral_entry.key,
+        'title': text(doctoral_fields['title']),
+        'institution': doctoral_config['institution'],
+        'year': int(doctoral_fields['year']),
+        'pdf_url': doctoral_fields['pdf'].strip(),
+        'details_url': doctoral_config['details_url'].strip(),
+    }
+    if any(urlsplit(doctoral[key]).scheme not in ('https', 'http')
+           for key in ('pdf_url', 'details_url')):
+        raise ValueError('Doctoral thesis links must use HTTPS or HTTP.')
+    initial_homepage = homepage(data, selected, {}, doctoral)
     profile, markdown, llms = profile_outputs(initial_homepage, data)
     profile_page = {
         '@context': 'https://schema.org', '@type': 'ProfilePage',
         'url': 'https://mfuegger.github.io/', 'mainEntity': profile,
     }
-    rendered_homepage = homepage(data, selected, profile_page)
+    rendered_homepage = homepage(data, selected, profile_page, doctoral)
     years = sorted({int(entry['year']) for entry in entries}, reverse=True)
     sections = []
     for year in years:
@@ -368,6 +385,8 @@ def main():
     (ROOT / 'teaching.md').write_text(teaching_markdown, encoding='utf-8')
     (ROOT / 'profile.json').write_text(json_text({
         'url': 'https://mfuegger.github.io/', **data, 'schemaOrg': profile,
+        'theses': [dict(label='Habilitation thesis', **data['habilitation']),
+                   dict(label='PhD thesis', **doctoral)],
     }), encoding='utf-8')
     (ROOT / 'profile.md').write_text(markdown, encoding='utf-8')
     (ROOT / 'llms.txt').write_text(llms, encoding='utf-8')

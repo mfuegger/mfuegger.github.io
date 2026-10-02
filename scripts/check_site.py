@@ -108,6 +108,16 @@ def main():
         assert publication_page.citations[entry.key] == entry.raw, f'Changed citation: {entry.key}'
         assert record['year'] == int(entry['year'])
         assert record['authors'], f'No authors: {entry.key}'
+    doctoral_record = next(record for record in machine['publications']
+                           if record['key'] == data['doctoral_thesis']['bibliography_key'])
+    doctoral = profile_data['theses'][1]
+    assert doctoral['title'] == doctoral_record['title']
+    assert doctoral['year'] == doctoral_record['year']
+    assert doctoral['pdf_url'] == doctoral_record['links']['pdf']
+    assert doctoral['title'] in visible and doctoral['title'] in markdown
+    assert doctoral['pdf_url'] in homepage.links
+    assert doctoral['details_url'] in homepage.links
+    assert profile_data['theses'][0]['title'] == data['habilitation']['title']
     selected = [line.strip() for line in (ROOT / 'selected-publications.txt').read_text().splitlines()
                 if line.strip() and not line.lstrip().startswith('#')]
     assert homepage.papers == selected
