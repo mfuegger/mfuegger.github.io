@@ -37,6 +37,10 @@
       "url": "publications.html"
     },
     {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.com/citations?user=MoWte0cAAAAJ&hl=en"
+    },
+    {
       "label": "ORCID",
       "url": "https://orcid.org/0000-0001-5765-0301"
     },
@@ -243,6 +247,7 @@
     "jobTitle": "Research Director, CNRS",
     "description": "My current focus is the systematic engineering of robust microbial systems, with applications in bioproduction, diagnosis, and medical treatment. This includes distributed computation in bacterial systems, particularly communication and coordination between cells. My approach combines experiments, modeling, numerical simulation, AI, and mathematical analysis.",
     "sameAs": [
+      "https://scholar.google.com/citations?user=MoWte0cAAAAJ&hl=en",
       "https://orcid.org/0000-0001-5765-0301",
       "https://github.com/mfuegger",
       "https://home.lmf.cnrs.fr/MatthiasFuegger/"
