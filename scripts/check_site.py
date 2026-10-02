@@ -108,11 +108,12 @@ def main():
             assert recording['thumbnail'] in pages['teaching.html'].assets
             assert recording['url'] in teaching_markdown
             assert recording['title'] in teaching_visible
-    newest_recording = next((course['recording'] for course in sorted(data['teaching']['courses'],
-                            key=lambda c: int(c['year']), reverse=True) if course.get('recording')), None)
-    if newest_recording:
-        assert newest_recording['url'] in homepage.links
-        assert newest_recording['thumbnail'] in homepage.assets
+    assert 'videos' in homepage.ids
+    for course in data['teaching']['courses']:
+        if course.get('recording'):
+            recording = course['recording']
+            assert recording['url'] in homepage.links
+            assert recording['thumbnail'] in homepage.assets
     if data['teaching'].get('channel'):
         channel = data['teaching']['channel']
         assert teaching['channel'] == channel

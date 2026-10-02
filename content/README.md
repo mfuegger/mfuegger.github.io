@@ -50,8 +50,8 @@ course in [profile.json](profile.json), under `teaching.courses`. For example:
 
 ```json
 "recording": {
-  "title": "Lecture 1 — Introduction",
-  "url": "https://www.youtube.com/watch?v=AeclUJJ-wwY&list=PLLGPEjQmmA7DSruH84oHIanAXo44Bf4sI",
+  "title": "Full lecture series",
+  "url": "https://www.youtube.com/playlist?list=PLLGPEjQmmA7DSruH84oHIanAXo44Bf4sI",
   "thumbnail": "assets/course-compbioeng-2025.jpg",
   "width": 1280,
   "height": 720
@@ -60,12 +60,13 @@ course in [profile.json](profile.json), under `teaching.courses`. For example:
 
 The image path points to a file in `assets/`; width and height are its actual pixel
 dimensions. The course archive shows the preview on that course. The homepage
-also shows the newest course with a recording, with its year clearly labelled.
+has a separate **Videos** section listing all course recordings, with their
+course names and years clearly labelled.
 The full playlist link is preserved. The preview is a local image and a normal
 link: YouTube is contacted only after a visitor follows it. Recording metadata
 and links are included in the profile/course JSON and Markdown exports.
 
-The course-section YouTube channel link is edited once in `teaching.channel`
+The Videos-section YouTube channel link is edited once in `teaching.channel`
 in the editable profile: `name` is the channel name and `url` its address.
 It appears on the homepage and course archive with a local YouTube icon, and
 is exported in the profile/course JSON and Markdown.

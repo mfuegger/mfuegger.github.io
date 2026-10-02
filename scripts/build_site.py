@@ -135,7 +135,8 @@ def course_recording(course):
                   url=escape(recording['url'], quote=True), thumbnail=escape(thumbnail, quote=True),
                   width=int(recording['width']), height=int(recording['height']),
                   accessible_label=escape(label, quote=True), course_name=escape(course['name']),
-                  year=int(course['year']), title=escape(recording['title']))
+                  year=int(course['year']), title=escape(recording['title']),
+                  watch_label='Watch playlist on YouTube' if urlsplit(recording['url']).path == '/playlist' else 'Watch on YouTube')
 
 
 def teaching_channel(data):
@@ -299,8 +300,8 @@ def homepage(data, selected, structured, doctoral):
         'selected_papers': nested(selected, 10),
         'courses': nested(courses, 12),
         'teaching_channel': nested(teaching_channel(data), 10),
-        'course_recording': nested(next((course_recording(course) for course in ordered_courses(data)
-                                         if course.get('recording')), ''), 10),
+        'course_recording': nested('\n'.join(course_recording(course) for course in ordered_courses(data)
+                                            if course.get('recording')), 10),
         'email': escape(data['email'], quote=True), 'contact_invitation': escape(data['contact']['invitation']),
         'address': '<br />'.join(escape(line) for line in data['contact']['address']),
     }
