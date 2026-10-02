@@ -109,9 +109,9 @@ With Fabricio Cravo, Gayathri Prakash, and Thomas Nowak.
 
 [All courses](https://mfuegger.github.io/teaching.html)
 
-- [Computational Bioengineering](https://mfuegger.github.io/teaching.html#course-2025-winter-computational-bioengineering) — Winter 2025 · With Thomas Nowak.
+- [Computational Bioengineering](https://mfuegger.github.io/teaching.html#course-2026-computational-bioengineering) — 2026 · ENS Paris-Saclay · With Thomas Nowak.
 
-- [Initiation à la recherche](https://mfuegger.github.io/teaching.html#course-2025-winter-initiation-a-la-recherche) — Winter 2025 · ENS Paris-Saclay · With Thomas Nowak.
+- [Initiation à la recherche](https://mfuegger.github.io/teaching.html#course-2026-initiation-a-la-recherche) — 2026 · ENS Paris-Saclay.
 
 ## Contact
 

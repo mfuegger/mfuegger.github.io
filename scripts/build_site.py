@@ -32,7 +32,7 @@ def nested(html, spaces):
     """Indent markup while keeping the copyable BibTeX exactly as supplied."""
     parts = re.split(r'(<pre>.*?</pre>)', html, flags=re.S)
     return ''.join(
-        part if i % 2 else part.replace('\n', '\n' + ' ' * spaces)
+        part if i % 2 else re.sub(r'(?m)^[ \t]+$', '', part.replace('\n', '\n' + ' ' * spaces))
         for i, part in enumerate(parts)
     )
 
@@ -100,7 +100,14 @@ def ordered_courses(data):
 def course_id(course):
     name = unicodedata.normalize('NFKD', course['name']).encode('ascii', 'ignore').decode().lower()
     slug = re.sub(r'[^a-z0-9]+', '-', name).strip('-')
-    return f'course-{course["year"]}-{course["term"].lower()}-{slug}'
+    term = course.get("term", "").lower()
+    return f'course-{course["year"]}-' + (term + '-' if term else '') + slug
+
+
+def course_metadata(course, include_year=True):
+    date = ' '.join(str(value) for value in
+                    (course.get('term', ''), course['year'] if include_year else '') if value)
+    return ' · '.join(value for value in (date, course['details']) if value)
 
 
 def teaching_outputs(data):
@@ -117,10 +124,10 @@ def teaching_outputs(data):
         for course in (item for item in courses if int(item['year']) == year):
             rendered.append(render(
                 'teaching-course.html', id=course_id(course), name=escape(course['name']),
-                term=escape(course['term']), details=escape(course['details']),
+                details=escape(course_metadata(course, include_year=False)),
                 course_link='<p class="paper-links">' + link(course['url'], 'Course website') + '</p>' if course.get('url') else '',
             ))
-            markdown.append(f'\n### {course["name"]}\n\n{course["term"]} · {course["details"]}\n')
+            markdown.append(f'\n### {course["name"]}\n\n{course_metadata(course, include_year=False)}\n')
             if course.get('url'):
                 markdown.append(f'\n[Course website]({course["url"]})\n')
         sections.append(render('teaching-year.html', year=year, courses=nested('\n'.join(rendered), 4)))
@@ -133,7 +140,7 @@ def teaching_outputs(data):
             '@type': 'ItemList', 'numberOfItems': len(courses),
             'itemListElement': [
                 {'@type': 'ListItem', 'position': i + 1, 'name': course['name'],
-                 'description': f'{course["term"]} {course["year"]} · {course["details"]}',
+                 'description': course_metadata(course),
                  'url': 'https://mfuegger.github.io/teaching.html#' + course_id(course)}
                 for i, course in enumerate(courses)
             ],
@@ -158,7 +165,7 @@ def homepage(data, selected, structured, doctoral):
     affiliation_html = link(affiliations[0]['url'], affiliations[0]['name']) + '<br />' + ' · '.join(escape(item['name']) for item in affiliations[1:])
     group_roles = 'I am ' + ' and '.join(escape(group['role']) + ' of the ' + link(group['url'], group['name']) for group in data['research']['groups']) + ' ' + escape(data['research']['group_context']) + '.'
     courses = '\n'.join(render('course.html', name=link('teaching.html#' + course_id(course), course['name']),
-                              details=escape(f'{course["term"]} {course["year"]} · {course["details"]}'))
+                              details=escape(course_metadata(course)))
                         for course in ordered_courses(data)[:2])
     values = {
         'head': head(data, structured),

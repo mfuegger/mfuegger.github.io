@@ -83,6 +83,24 @@
   "teaching": {
     "courses": [
       {
+        "year": 2026,
+        "name": "Computational Bioengineering",
+        "details": "ENS Paris-Saclay · With Thomas Nowak.",
+        "url": "https://compbioeng.biodis.co"
+      },
+      {
+        "year": 2026,
+        "name": "Initiation à la recherche",
+        "details": "ENS Paris-Saclay."
+      },
+      {
+        "year": 2026,
+        "term": "Summer",
+        "name": "Computational Bioengineering",
+        "details": "TU Wien · Invited professor, Informatics Doctoral School.",
+        "url": "https://tiss.tuwien.ac.at/course/courseDetails.xhtml?semester=2026S&courseNr=199035"
+      },
+      {
         "year": 2025,
         "term": "Winter",
         "name": "Computational Bioengineering",

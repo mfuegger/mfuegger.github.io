@@ -2,6 +2,24 @@
 
 Courses and guest lectures, listed by year.
 
+## 2026
+
+### Computational Bioengineering
+
+ENS Paris-Saclay · With Thomas Nowak.
+
+[Course website](https://compbioeng.biodis.co)
+
+### Initiation à la recherche
+
+ENS Paris-Saclay.
+
+### Computational Bioengineering
+
+Summer · TU Wien · Invited professor, Informatics Doctoral School.
+
+[Course website](https://tiss.tuwien.ac.at/course/courseDetails.xhtml?semester=2026S&courseNr=199035)
+
 ## 2025
 
 ### Computational Bioengineering

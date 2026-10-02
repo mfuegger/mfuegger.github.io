@@ -52,11 +52,12 @@ trailing comma after the final entry. Edit the source directly on GitHub:
 committing to `main` rebuilds, checks, and publishes the site automatically.
 
 The teaching archive lives entirely at `teaching.html`. Its 17 initial records
-were imported from the institutional profile's 2015–2025 archive. Maintain all
-records under `teaching.courses`; no teaching data is fetched from the institutional
-page during builds. `year`, `term`, `name`, and `details` are required; `url` is
-optional. The homepage automatically shows the two most recent records and links
-to the full archive. All pages share the same Courses navigation link.
+were imported from the institutional profile's 2015–2025 archive; the three 2026
+entries were added from the owner's updates and the TU Wien course catalogue.
+Maintain all records under `teaching.courses`; no teaching data is fetched from the institutional
+page during builds. `year`, `name`, and `details` are required; `term` and `url` are
+optional. Omit `term` when only the year is known. The homepage automatically
+shows the two most recent records and links to the full archive. All pages share the same Courses navigation link.
 Names and typography were normalized (including Christoph Lenzen and French
 accents); dates, collaborators, lecture durations, and course URLs follow the source.
 
