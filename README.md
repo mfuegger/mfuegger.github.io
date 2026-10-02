@@ -11,6 +11,7 @@ in the GitHub file list. You do not edit the published HTML or JSON exports.
 
 | I want to change… | Open this source | Edit this part |
 | --- | --- | --- |
+| Standalone research videos | [content/profile.json](content/profile.json) | `videos` |
 | Courses and lectures | [content/profile.json](content/profile.json) | `teaching.courses` |
 | Biography and research | [content/profile.json](content/profile.json) | `description`, `research` |
 | Contact and profile links | [content/profile.json](content/profile.json) | `email`, `contact`, `links` |
@@ -226,3 +227,11 @@ The Videos-section YouTube channel link is edited once in `teaching.channel`
 in the editable profile: `name` is the channel name and `url` its address.
 It appears on the homepage and course archive with a local YouTube icon, and
 is exported in the profile/course JSON and Markdown.
+
+## Other videos
+
+Add standalone research videos to the top-level `videos` array in the editable
+profile. Each entry has `title`, `url`, a local `thumbnail` path, and its pixel
+`width` and `height`; `year` and `description` are optional. The Videos section
+shows course playlists first, followed by these entries in the order you choose.
+The same source is exported to profile JSON and Markdown; do not edit the HTML.

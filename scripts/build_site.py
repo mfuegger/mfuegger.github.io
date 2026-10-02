@@ -119,24 +119,31 @@ def course_metadata(course, include_year=True):
 
 
 
+def video_preview(video):
+    if urlsplit(video['url']).scheme != 'https':
+        raise ValueError('Videos must use HTTPS links.')
+    thumbnail = video['thumbnail']
+    if urlsplit(thumbnail).scheme or urlsplit(thumbnail).netloc or not thumbnail.startswith('assets/'):
+        raise ValueError('Video thumbnails must be local assets.')
+    if not (ROOT / thumbnail).is_file():
+        raise ValueError('Missing video thumbnail: ' + thumbnail)
+    heading = video['title'] + (f" · {video['year']}" if video.get('year') else '')
+    description = video.get('description', '')
+    label = 'Watch ' + heading + ' on YouTube'
+    return render('video-preview.html',
+                  url=escape(video['url'], quote=True), thumbnail=escape(thumbnail, quote=True),
+                  width=int(video['width']), height=int(video['height']),
+                  accessible_label=escape(label, quote=True), heading=escape(heading),
+                  description='<span>' + escape(description) + '</span>' if description else '',
+                  watch_label='Watch playlist on YouTube' if urlsplit(video['url']).path == '/playlist' else 'Watch on YouTube')
+
+
 def course_recording(course):
     recording = course.get('recording')
     if not recording:
         return ''
-    if urlsplit(recording['url']).scheme != 'https':
-        raise ValueError('Course recordings must use HTTPS links.')
-    thumbnail = recording['thumbnail']
-    if urlsplit(thumbnail).scheme or urlsplit(thumbnail).netloc or not thumbnail.startswith('assets/'):
-        raise ValueError('Course recording thumbnails must be local assets.')
-    if not (ROOT / thumbnail).is_file():
-        raise ValueError('Missing course recording thumbnail: ' + thumbnail)
-    label = f"Watch {course['name']} {course['year']}: {recording['title']} on YouTube"
-    return render('course-recording.html',
-                  url=escape(recording['url'], quote=True), thumbnail=escape(thumbnail, quote=True),
-                  width=int(recording['width']), height=int(recording['height']),
-                  accessible_label=escape(label, quote=True), course_name=escape(course['name']),
-                  year=int(course['year']), title=escape(recording['title']),
-                  watch_label='Watch playlist on YouTube' if urlsplit(recording['url']).path == '/playlist' else 'Watch on YouTube')
+    return video_preview(dict(recording, title=course['name'], year=course['year'],
+                              description=recording['title']))
 
 
 def teaching_channel(data):
@@ -300,8 +307,9 @@ def homepage(data, selected, structured, doctoral):
         'selected_papers': nested(selected, 10),
         'courses': nested(courses, 12),
         'teaching_channel': nested(teaching_channel(data), 10),
-        'course_recording': nested('\n'.join(course_recording(course) for course in ordered_courses(data)
-                                            if course.get('recording')), 10),
+        'video_previews': nested('\n'.join([course_recording(course) for course in ordered_courses(data)
+                                           if course.get('recording')]
+                                          + [video_preview(video) for video in data.get('videos', [])]), 10),
         'email': escape(data['email'], quote=True), 'contact_invitation': escape(data['contact']['invitation']),
         'address': '<br />'.join(escape(line) for line in data['contact']['address']),
     }

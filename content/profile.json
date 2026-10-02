@@ -247,5 +247,16 @@
   "portrait_dimensions": {
     "width": 2910,
     "height": 3935
-  }
+  },
+  "videos": [
+    {
+      "title": "Vibe-Formalizing our TCS Paper in Lean",
+      "year": 2026,
+      "description": "Formalizing a theoretical computer science paper in Lean.",
+      "url": "https://www.youtube.com/watch?v=rE5_Zc2AMwM",
+      "thumbnail": "assets/video-lean-formalization.jpg",
+      "width": 1280,
+      "height": 720
+    }
+  ]
 }

@@ -114,6 +114,10 @@ def main():
             recording = course['recording']
             assert recording['url'] in homepage.links
             assert recording['thumbnail'] in homepage.assets
+    for video in data.get('videos', []):
+        assert video['url'] in homepage.links and video['url'] in markdown
+        assert video['thumbnail'] in homepage.assets
+        assert video['title'] in visible and video['title'] in markdown
     if data['teaching'].get('channel'):
         channel = data['teaching']['channel']
         assert teaching['channel'] == channel

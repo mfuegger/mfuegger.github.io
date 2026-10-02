@@ -6,6 +6,7 @@ After a commit to `main`, GitHub Actions builds and publishes the site automatic
 | Update | File |
 | --- | --- |
 | Courses, research, biography, contact, links, portrait | [profile.json](profile.json) |
+| Standalone research videos (`videos` list) | [profile.json](profile.json) |
 | Selected homepage papers | [selected-publications.txt](selected-publications.txt) |
 | Privacy and legal notices | [notices.json](notices.json) |
 | Bibliography (normally refreshed from the institutional source) | [publications.bib](publications.bib) |
@@ -70,3 +71,11 @@ The Videos-section YouTube channel link is edited once in `teaching.channel`
 in the editable profile: `name` is the channel name and `url` its address.
 It appears on the homepage and course archive with a local YouTube icon, and
 is exported in the profile/course JSON and Markdown.
+
+## Other videos
+
+Add standalone research videos to the top-level `videos` array in the editable
+profile. Each entry has `title`, `url`, a local `thumbnail` path, and its pixel
+`width` and `height`; `year` and `description` are optional. The Videos section
+shows course playlists first, followed by these entries in the order you choose.
+The same source is exported to profile JSON and Markdown; do not edit the HTML.
