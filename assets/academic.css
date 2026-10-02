@@ -96,7 +96,7 @@ nav a[aria-current="page"] {
   grid-template-columns: minmax(0, 1fr) 152px;
   gap: 3.5rem;
   align-items: start;
-  padding: 4.3rem 0 3.6rem;
+  padding: 3rem 0 2.5rem;
 }
 .intro h1 {
   font-family: Georgia, "Times New Roman", serif;
@@ -108,14 +108,8 @@ nav a[aria-current="page"] {
 }
 .role {
   color: var(--muted);
-  margin: 0 0 1.6rem;
+  margin: 0 0 0.6rem;
   font-size: 1rem;
-}
-.lead {
-  font-size: 1.16rem;
-  line-height: 1.65;
-  max-width: 42rem;
-  margin: 0 0 1.4rem;
 }
 .affiliation {
   font-size: 0.9rem;
@@ -173,24 +167,9 @@ p {
 .research-text {
   max-width: 46rem;
 }
-.research-topics {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2.3rem;
-  margin: 1.6rem 0 1.2rem;
-}
-.research-topics h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem;
-}
-.research-topics p {
-  font-size: 0.94rem;
-  color: var(--muted);
-  line-height: 1.65;
-  margin: 0;
-}
 .group-links {
+  max-width: 46rem;
+  margin-top: 1.4rem;
   font-size: 0.94rem;
 }
 
@@ -437,20 +416,13 @@ article {
     font-size: 0.9rem;
     margin-bottom: 0;
   }
-  .lead {
-    font-size: 1.1rem;
-  }
   .section {
     padding: 2rem 0;
   }
-  .research-topics,
   .two-column,
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-  .research-topics {
-    margin-top: 1.3rem;
   }
   .section-heading {
     align-items: flex-start;

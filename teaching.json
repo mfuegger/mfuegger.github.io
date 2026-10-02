@@ -114,7 +114,7 @@
   "schemaOrg": {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Teaching — Matthias Függer",
+    "name": "Courses and lectures — Matthias Függer",
     "url": "https://mfuegger.github.io/teaching.html",
     "about": {
       "@id": "https://mfuegger.github.io/#person"

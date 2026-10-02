@@ -1,4 +1,4 @@
-# Teaching — Matthias Függer
+# Courses and lectures — Matthias Függer
 
 Courses and guest lectures, listed by year.
 

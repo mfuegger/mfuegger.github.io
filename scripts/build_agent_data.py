@@ -28,6 +28,7 @@ class ProfileParser(HTMLParser):
         if not self.in_main:
             return
         capture = ('name' if attrs.get('id') == 'name' else
+                   'lead' if attrs.get('id') == 'research-summary' else
                    next((key for key in ('role', 'lead')
                          if key in attrs.get('class', '').split()), None))
         if tag not in ('br', 'img', 'hr', 'input', 'meta', 'link'):
@@ -122,10 +123,10 @@ listed before publication.
 - [BibTeX bibliography]({SITE}publications.bib): Authoritative source entries.
 - [Last bibliography source check]({SITE}bibliography-status.json): Check date and source checksum.
 
-## Teaching
-- [Full teaching archive]({SITE}teaching.html): Courses and guest lectures by year.
-- [Teaching in JSON]({SITE}teaching.json): Complete teaching records from the editable profile data.
-- [Teaching in Markdown]({SITE}teaching.md): Readable course archive with links.
+## Courses
+- [Full course archive]({SITE}teaching.html): Courses and guest lectures by year.
+- [Courses in JSON]({SITE}teaching.json): Complete teaching records from the editable profile data.
+- [Courses in Markdown]({SITE}teaching.md): Readable course archive with links.
 
 ## Primary sources
 - [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)

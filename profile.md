@@ -2,8 +2,6 @@
 
 Research Director, CNRS
 
-I work on the systematic engineering of robust microbial systems, combining experiments, modeling, numerical simulation, AI, and mathematical analysis.
-
 [Laboratoire Méthodes Formelles](https://lmf.cnrs.fr/)
 Université Paris-Saclay · CNRS · ENS Paris-Saclay
 
@@ -11,19 +9,9 @@ Université Paris-Saclay · CNRS · ENS Paris-Saclay
 
 ## Research
 
-My work spans microbial systems, distributed algorithms, and digital circuits. In microbial systems, I study applications in bioproduction, diagnosis, and medical treatment.
+My current focus is the systematic engineering of robust microbial systems, with applications in bioproduction, diagnosis, and medical treatment. This work combines experiments, modeling, numerical simulation, AI, and mathematical analysis.
 
-### Microbial systems
-
-Distributed biocomputation, biochemical reaction networks, and computational tools for modeling biological systems.
-
-### Distributed algorithms
-
-Consensus, coordination, and computation in dynamic networks.
-
-### Circuits and formal methods
-
-Timing models, fault tolerance, and the analysis and verification of computing systems.
+I also study distributed algorithms and digital circuits, including consensus in dynamic networks, timing models, and fault tolerance.
 
 I am co-PI of the [Cellular Computing Group](https://www.cellularcomputing.group/) and head of the [Distributed Computing Group](https://lmf.cnrs.fr/Research/CDS) at LMF.
 
@@ -81,9 +69,9 @@ Université Paris-Saclay · 2022
 
 [Thesis PDF](https://mfuegger.github.io/habil/thesis.pdf) [Defense details](https://mfuegger.github.io/habil/)
 
-## Recent teaching
+## Recent courses
 
-[All teaching](https://mfuegger.github.io/teaching.html)
+[All courses](https://mfuegger.github.io/teaching.html)
 
 - [Computational Bioengineering](https://mfuegger.github.io/teaching.html#course-2025-winter-computational-bioengineering) — Winter 2025 · With Thomas Nowak.
 

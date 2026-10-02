@@ -20,6 +20,10 @@ source files above. All presentation styles for these pages live in CSS.
 `bibliography-status.json` is also generated; it records the last successful
 source check and its checksum.
 
+The homepage Research section uses `description` for the current focus and
+`research.description` for the additional research areas. Group roles remain in
+`research.groups`; the visible text and machine-readable exports share this source.
+
 For example, add a course to `teaching.courses` in `content/profile.json`:
 
 ```json
@@ -42,7 +46,7 @@ were imported from the institutional profile's 2015–2025 archive. Maintain all
 records under `teaching.courses`; no teaching data is fetched from the institutional
 page during builds. `year`, `term`, `name`, and `details` are required; `url` is
 optional. The homepage automatically shows the two most recent records and links
-to the full archive. All pages share the same Teaching navigation link.
+to the full archive. All pages share the same Courses navigation link.
 Names and typography were normalized (including Christoph Lenzen and French
 accents); dates, collaborators, lecture durations, and course URLs follow the source.
 

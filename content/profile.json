@@ -9,7 +9,7 @@
     "name": "CNRS",
     "url": "https://www.cnrs.fr/"
   },
-  "description": "I work on the systematic engineering of robust microbial systems, combining experiments, modeling, numerical simulation, AI, and mathematical analysis.",
+  "description": "My current focus is the systematic engineering of robust microbial systems, with applications in bioproduction, diagnosis, and medical treatment. This work combines experiments, modeling, numerical simulation, AI, and mathematical analysis.",
   "affiliations": [
     {
       "name": "Laboratoire Méthodes Formelles",
@@ -46,21 +46,7 @@
   ],
   "research": {
     "group_context": "at LMF",
-    "description": "My work spans microbial systems, distributed algorithms, and digital circuits. In microbial systems, I study applications in bioproduction, diagnosis, and medical treatment.",
-    "topics": [
-      {
-        "name": "Microbial systems",
-        "description": "Distributed biocomputation, biochemical reaction networks, and computational tools for modeling biological systems."
-      },
-      {
-        "name": "Distributed algorithms",
-        "description": "Consensus, coordination, and computation in dynamic networks."
-      },
-      {
-        "name": "Circuits and formal methods",
-        "description": "Timing models, fault tolerance, and the analysis and verification of computing systems."
-      }
-    ],
+    "description": "I also study distributed algorithms and digital circuits, including consensus in dynamic networks, timing models, and fault tolerance.",
     "groups": [
       {
         "role": "co-PI",

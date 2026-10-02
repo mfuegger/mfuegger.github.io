@@ -1,6 +1,6 @@
 # Matthias Függer
 
-> Research Director, CNRS. I work on the systematic engineering of robust microbial systems, combining experiments, modeling, numerical simulation, AI, and mathematical analysis.
+> Research Director, CNRS. My current focus is the systematic engineering of robust microbial systems, with applications in bioproduction, diagnosis, and medical treatment. This work combines experiments, modeling, numerical simulation, AI, and mathematical analysis.
 
 This is the personal academic website of Matthias Függer. The files below
 are generated from the visible homepage and its source bibliography.
@@ -18,10 +18,10 @@ listed before publication.
 - [BibTeX bibliography](https://mfuegger.github.io/publications.bib): Authoritative source entries.
 - [Last bibliography source check](https://mfuegger.github.io/bibliography-status.json): Check date and source checksum.
 
-## Teaching
-- [Full teaching archive](https://mfuegger.github.io/teaching.html): Courses and guest lectures by year.
-- [Teaching in JSON](https://mfuegger.github.io/teaching.json): Complete teaching records from the editable profile data.
-- [Teaching in Markdown](https://mfuegger.github.io/teaching.md): Readable course archive with links.
+## Courses
+- [Full course archive](https://mfuegger.github.io/teaching.html): Courses and guest lectures by year.
+- [Courses in JSON](https://mfuegger.github.io/teaching.json): Complete teaching records from the editable profile data.
+- [Courses in Markdown](https://mfuegger.github.io/teaching.md): Readable course archive with links.
 
 ## Primary sources
 - [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)

@@ -61,12 +61,12 @@ def head(data, structured, page='home'):
     titles = {
         'home': data['name'] + ' — ' + data['affiliation_label'].replace(' / ', ' · '),
         'publications': 'Publications — ' + data['name'],
-        'teaching': 'Teaching — ' + data['name'],
+        'teaching': 'Courses and lectures — ' + data['name'],
     }
     descriptions = {
         'home': data['name'] + ', ' + data['role'] + '. ' + data['description'],
         'publications': 'Publications by ' + data['name'] + ' and collaborators, with papers, preprints, and BibTeX citations.',
-        'teaching': 'Teaching by ' + data['name'] + ': courses and guest lectures, with the complete archive by year.',
+        'teaching': 'Courses and lectures by ' + data['name'] + ': courses and guest lectures, with the complete archive by year.',
     }
     alternatives = [
         ('application/json', 'publications.json' if page == 'publications' else 'profile.json', 'Structured data'),
@@ -74,8 +74,8 @@ def head(data, structured, page='home'):
         ('text/markdown', 'profile.md', 'Profile in Markdown'),
     ]
     if page == 'teaching':
-        alternatives = [('application/json', 'teaching.json', 'Teaching data'),
-                        ('text/markdown', 'teaching.md', 'Teaching in Markdown')]
+        alternatives = [('application/json', 'teaching.json', 'Course data'),
+                        ('text/markdown', 'teaching.md', 'Courses in Markdown')]
     alternate_links = '\n'.join(
         f'<link rel="alternate" type="{kind}" href="{path}" title="{title}" />'
         for kind, path, title in alternatives
@@ -109,7 +109,7 @@ def teaching_outputs(data):
         raise ValueError('Teaching records contain duplicate course/year/term combinations.')
     years = sorted({int(course['year']) for course in courses}, reverse=True)
     sections = []
-    markdown = [f'# Teaching — {data["name"]}\n\nCourses and guest lectures, listed by year.\n']
+    markdown = [f'# Courses and lectures — {data["name"]}\n\nCourses and guest lectures, listed by year.\n']
     for year in years:
         rendered = []
         markdown.append(f'\n## {year}\n')
@@ -125,7 +125,7 @@ def teaching_outputs(data):
         sections.append(render('teaching-year.html', year=year, courses=nested('\n'.join(rendered), 4)))
     structured = {
         '@context': 'https://schema.org', '@type': 'CollectionPage',
-        'name': 'Teaching — ' + data['name'],
+        'name': 'Courses and lectures — ' + data['name'],
         'url': 'https://mfuegger.github.io/teaching.html',
         'about': {'@id': 'https://mfuegger.github.io/#person'},
         'mainEntity': {
@@ -151,7 +151,6 @@ def homepage(data, selected, structured):
     affiliations = data['affiliations']
     affiliation_html = link(affiliations[0]['url'], affiliations[0]['name']) + '<br />' + ' · '.join(escape(item['name']) for item in affiliations[1:])
     group_roles = 'I am ' + ' and '.join(escape(group['role']) + ' of the ' + link(group['url'], group['name']) for group in data['research']['groups']) + ' ' + escape(data['research']['group_context']) + '.'
-    topics = '\n'.join(render('topic.html', **{key: escape(value) for key, value in topic.items()}) for topic in data['research']['topics'])
     courses = '\n'.join(render('course.html', name=link('teaching.html#' + course_id(course), course['name']),
                               details=escape(f'{course["term"]} {course["year"]} · {course["details"]}'))
                         for course in ordered_courses(data)[:2])
@@ -163,7 +162,7 @@ def homepage(data, selected, structured):
         'affiliations': affiliation_html,
         'quick_links': nested('\n'.join([link('mailto:' + data['email'], 'Email')] + [link(item['url'], item['label']) for item in data['links']]), 14),
         'research_description': escape(data['research']['description']),
-        'topics': nested(topics, 12), 'group_roles': group_roles,
+        'group_roles': group_roles,
         'selected_papers': nested(selected, 10),
         'courses': nested(courses, 12),
         'email': escape(data['email'], quote=True), 'contact_invitation': escape(data['contact']['invitation']),
