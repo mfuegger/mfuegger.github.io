@@ -1,0 +1,101 @@
+# Matthias Függer
+
+Research Director, CNRS
+
+I work on the systematic engineering of robust microbial systems, combining experiments, modeling, numerical simulation, AI, and mathematical analysis.
+
+[Laboratoire Méthodes Formelles](https://lmf.cnrs.fr/)
+Université Paris-Saclay · CNRS · ENS Paris-Saclay
+
+[Email](mailto:mfuegger@lmf.cnrs.fr) [Publications](https://mfuegger.github.io/publications.html) [ORCID](https://orcid.org/0000-0001-5765-0301) [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)
+
+## Research
+
+My work spans microbial systems, distributed algorithms, and digital circuits. In microbial systems, I study applications in bioproduction, diagnosis, and medical treatment.
+
+### Microbial systems
+
+Distributed biocomputation, biochemical reaction networks, and computational tools for modeling biological systems.
+
+### Distributed algorithms
+
+Consensus, coordination, and computation in dynamic networks.
+
+### Circuits and formal methods
+
+Timing models, fault tolerance, and the analysis and verification of computing systems.
+
+I am co-PI of the [Cellular Computing Group](https://www.cellularcomputing.group/) and head of the [Distributed Computing Group](https://lmf.cnrs.fr/Research/CDS) at LMF.
+
+## Selected publications
+
+[All publications](https://mfuegger.github.io/publications.html)
+
+### [MobsPy: A programming language for biochemical reaction networks](https://doi.org/10.1371/journal.pcbi.1013024)
+
+Fabricio Cravo, Gayathri Prakash, Matthias Függer, Thomas Nowak
+
+PLOS Computational Biology · 2025
+
+[PDF](https://hal.science/hal-05389427/document) [DOI](https://doi.org/10.1371/journal.pcbi.1013024) [HAL](https://hal.science/hal-05389427)
+
+### [Phage-mediated intercellular CRISPRi for biocomputation in bacterial consortia](https://doi.org/10.1093/nar/gkae1256)
+
+Abhinav Pujar, Amit Pathania, Corbin Hopper, Amir Pandi, Cristian Ruiz Calderón, Matthias Függer, Thomas Nowak, Manish Kushwaha
+
+Nucleic Acids Research · 2025
+
+[PDF](https://hal.science/hal-04857279/document) [DOI](https://doi.org/10.1093/nar/gkae1256) [bioRxiv](https://www.biorxiv.org/content/10.1101/2024.09.02.610857v2.abstract) [HAL](https://hal.science/hal-04857279)
+
+### [Provable Coordination for LLM Agents via Message Sequence Charts](https://arxiv.org/abs/2604.17612)
+
+Benedikt Bollig, Matthias Függer, Thomas Nowak
+
+International Symposium on Leveraging Applications of Formal Methods, Verification and Validation (ISoLA) · 2026 · Accepted, to appear
+
+[PDF](https://hal.science/hal-05596574/document) [arXiv](https://arxiv.org/abs/2604.17612) [HAL](https://hal.science/hal-05596574)
+
+### [Tight Bounds for Asymptotic and Approximate Consensus](https://doi.org/10.1145/3485242)
+
+Matthias Függer, Thomas Nowak, Manfred Schwarz
+
+Journal of the ACM (JACM) · 2021
+
+[PDF](https://hal.science/hal-03408731/document) [DOI](https://doi.org/10.1145/3485242) [HAL](https://hal.science/hal-03408731)
+
+## Software
+
+[MobsPy](https://github.com/ROBACON/mobspy)
+
+A Python-based language for modeling biochemical reaction networks using meta-species and meta-reactions.
+
+With Fabricio Cravo, Gayathri Prakash, and Thomas Nowak.
+
+[Source code](https://github.com/ROBACON/mobspy) [Paper](https://doi.org/10.1371/journal.pcbi.1013024)
+
+## Habilitation
+
+[Computing at the border of abstractions: the power of timed, non-binary, distributed circuits](https://mfuegger.github.io/habil/thesis.pdf)
+
+Université Paris-Saclay · 2022
+
+[Thesis PDF](https://mfuegger.github.io/habil/thesis.pdf) [Defense details](https://mfuegger.github.io/habil/)
+
+## Teaching
+
+- Computational Bioengineering — Winter 2024 and 2025 · With Thomas Nowak
+
+- Initiation à la recherche — Winter 2024 and 2025 · ENS Paris-Saclay · With Thomas Nowak
+
+[Teaching archive on my institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)
+
+## Contact
+
+[mfuegger@lmf.cnrs.fr](mailto:mfuegger@lmf.cnrs.fr)
+
+For research inquiries and opportunities for internships, PhD studies, or postdoctoral research, please contact me.
+
+Laboratoire Méthodes Formelles
+ENS Paris-Saclay
+4 avenue des Sciences
+91190 Gif-sur-Yvette, France

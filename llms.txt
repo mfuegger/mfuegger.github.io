@@ -1,0 +1,22 @@
+# Matthias Függer
+
+> Research Director, CNRS. I work on the systematic engineering of robust microbial systems, combining experiments, modeling, numerical simulation, AI, and mathematical analysis.
+
+This is the personal academic website of Matthias Függer. The files below
+are generated from the visible homepage and its source bibliography.
+Publication status and author order are preserved; accepted papers may be
+listed before publication.
+
+## Profile
+- [Homepage](https://mfuegger.github.io/): Research, affiliations, software, teaching, and contact.
+- [Profile in Markdown](https://mfuegger.github.io/profile.md): Full readable homepage content.
+- [Structured profile](https://mfuegger.github.io/profile.json): Complete profile, research, teaching, contact, and Schema.org Person data.
+
+## Publications
+- [Full publication list](https://mfuegger.github.io/publications.html): All papers, by year.
+- [Publications in JSON](https://mfuegger.github.io/publications.json): Titles, authors, years, venues, status, links, and source BibTeX.
+- [BibTeX bibliography](https://mfuegger.github.io/publications.bib): Authoritative source entries.
+
+## Primary sources
+- [Institutional profile](https://home.lmf.cnrs.fr/MatthiasFuegger/)
+- [Institutional bibliography](https://home.lmf.cnrs.fr/downloads/MatthiasFuegger/mf.bib)

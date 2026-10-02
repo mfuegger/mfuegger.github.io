@@ -1,0 +1,157 @@
+{
+  "url": "https://mfuegger.github.io/",
+  "name": "Matthias Függer",
+  "alternate_names": [
+    "Matthias Fugger"
+  ],
+  "role": "Research Director, CNRS",
+  "employer": {
+    "name": "CNRS",
+    "url": "https://www.cnrs.fr/"
+  },
+  "description": "I work on the systematic engineering of robust microbial systems, combining experiments, modeling, numerical simulation, AI, and mathematical analysis.",
+  "affiliations": [
+    {
+      "name": "Laboratoire Méthodes Formelles",
+      "url": "https://lmf.cnrs.fr/"
+    },
+    {
+      "name": "Université Paris-Saclay",
+      "url": "https://www.universite-paris-saclay.fr/"
+    },
+    {
+      "name": "CNRS",
+      "url": "https://www.cnrs.fr/"
+    },
+    {
+      "name": "ENS Paris-Saclay",
+      "url": "https://ens-paris-saclay.fr/"
+    }
+  ],
+  "email": "mfuegger@lmf.cnrs.fr",
+  "portrait": "assets/portrait.jpg",
+  "links": [
+    {
+      "label": "Publications",
+      "url": "publications.html"
+    },
+    {
+      "label": "ORCID",
+      "url": "https://orcid.org/0000-0001-5765-0301"
+    },
+    {
+      "label": "Institutional profile",
+      "url": "https://home.lmf.cnrs.fr/MatthiasFuegger/"
+    }
+  ],
+  "research": {
+    "description": "My work spans microbial systems, distributed algorithms, and digital circuits. In microbial systems, I study applications in bioproduction, diagnosis, and medical treatment.",
+    "topics": [
+      {
+        "name": "Microbial systems",
+        "description": "Distributed biocomputation, biochemical reaction networks, and computational tools for modeling biological systems."
+      },
+      {
+        "name": "Distributed algorithms",
+        "description": "Consensus, coordination, and computation in dynamic networks."
+      },
+      {
+        "name": "Circuits and formal methods",
+        "description": "Timing models, fault tolerance, and the analysis and verification of computing systems."
+      }
+    ],
+    "groups": [
+      {
+        "role": "co-PI",
+        "name": "Cellular Computing Group",
+        "url": "https://www.cellularcomputing.group/"
+      },
+      {
+        "role": "head",
+        "name": "Distributed Computing Group",
+        "url": "https://lmf.cnrs.fr/Research/CDS"
+      }
+    ]
+  },
+  "software": {
+    "name": "MobsPy",
+    "url": "https://github.com/ROBACON/mobspy",
+    "description": "A Python-based language for modeling biochemical reaction networks using meta-species and meta-reactions.",
+    "collaborators": "With Fabricio Cravo, Gayathri Prakash, and Thomas Nowak.",
+    "paper_url": "https://doi.org/10.1371/journal.pcbi.1013024"
+  },
+  "habilitation": {
+    "title": "Computing at the border of abstractions: the power of timed, non-binary, distributed circuits",
+    "institution": "Université Paris-Saclay",
+    "year": 2022,
+    "pdf_url": "habil/thesis.pdf",
+    "details_url": "habil/"
+  },
+  "teaching": {
+    "courses": [
+      {
+        "name": "Computational Bioengineering",
+        "details": "Winter 2024 and 2025 · With Thomas Nowak"
+      },
+      {
+        "name": "Initiation à la recherche",
+        "details": "Winter 2024 and 2025 · ENS Paris-Saclay · With Thomas Nowak"
+      }
+    ],
+    "archive_url": "https://home.lmf.cnrs.fr/MatthiasFuegger/"
+  },
+  "contact": {
+    "invitation": "For research inquiries and opportunities for internships, PhD studies, or postdoctoral research, please contact me.",
+    "address": [
+      "Laboratoire Méthodes Formelles",
+      "ENS Paris-Saclay",
+      "4 avenue des Sciences",
+      "91190 Gif-sur-Yvette, France"
+    ]
+  },
+  "schemaOrg": {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://mfuegger.github.io/#person",
+    "name": "Matthias Függer",
+    "alternateName": [
+      "Matthias Fugger"
+    ],
+    "url": "https://mfuegger.github.io/",
+    "image": "https://mfuegger.github.io/assets/portrait.jpg",
+    "jobTitle": "Research Director, CNRS",
+    "description": "I work on the systematic engineering of robust microbial systems, combining experiments, modeling, numerical simulation, AI, and mathematical analysis.",
+    "sameAs": [
+      "https://orcid.org/0000-0001-5765-0301",
+      "https://home.lmf.cnrs.fr/MatthiasFuegger/"
+    ],
+    "affiliation": [
+      {
+        "@type": "Organization",
+        "name": "Laboratoire Méthodes Formelles",
+        "url": "https://lmf.cnrs.fr/"
+      },
+      {
+        "@type": "Organization",
+        "name": "Université Paris-Saclay",
+        "url": "https://www.universite-paris-saclay.fr/"
+      },
+      {
+        "@type": "Organization",
+        "name": "CNRS",
+        "url": "https://www.cnrs.fr/"
+      },
+      {
+        "@type": "Organization",
+        "name": "ENS Paris-Saclay",
+        "url": "https://ens-paris-saclay.fr/"
+      }
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "CNRS",
+      "url": "https://www.cnrs.fr/"
+    },
+    "email": "mfuegger@lmf.cnrs.fr"
+  }
+}

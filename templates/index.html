@@ -1,0 +1,85 @@
+<!doctype html>
+<!-- Generated page. Edit content/profile.json or templates/index.html, then rebuild. -->
+<html lang="en">
+  $head
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="wrap">
+      $header
+      <main id="main">
+        <section id="person" class="intro" aria-labelledby="name">
+          <div class="intro-name">
+            <h1 id="name">$name</h1>
+            <p class="role">$role</p>
+          </div>
+          <div class="intro-photo">
+            <img class="portrait" src="$portrait" alt="$name" width="152" height="176" />
+          </div>
+          <div class="intro-body">
+            <p class="lead">$description</p>
+            <p class="affiliation">$affiliations</p>
+            <div class="quick-links">
+              $quick_links
+            </div>
+          </div>
+        </section>
+        <section id="research" class="section" aria-labelledby="research-title">
+          <h2 class="section-title" id="research-title">Research</h2>
+          <p class="research-text">$research_description</p>
+          <div class="research-topics">
+            $topics
+          </div>
+          <p class="group-links">$group_roles</p>
+        </section>
+        <section id="selected-publications" class="section" aria-labelledby="selected-title">
+          <div class="section-heading">
+            <h2 class="section-title" id="selected-title">Selected publications</h2>
+            <a href="publications.html">All publications</a>
+          </div>
+          $selected_papers
+        </section>
+        <section class="section two-column" aria-label="Software and thesis">
+          <div id="software">
+            <h2 class="section-title">Software</h2>
+            <p><a href="$software_url"><strong>$software_name</strong></a></p>
+            <p class="subtle">$software_description</p>
+            <p class="subtle">$software_collaborators</p>
+            <p class="paper-links">
+              <a href="$software_url">Source code</a>
+              <a href="$software_paper_url">Paper</a>
+            </p>
+          </div>
+          <div>
+            <h2 class="section-title">Habilitation</h2>
+            <p><a href="$thesis_pdf_url">$thesis_title</a></p>
+            <p class="subtle">$thesis_institution · $thesis_year</p>
+            <p class="paper-links">
+              <a href="$thesis_pdf_url">Thesis PDF</a>
+              <a href="$thesis_details_url">Defense details</a>
+            </p>
+          </div>
+        </section>
+        <section id="teaching" class="section" aria-labelledby="teaching-title">
+          <h2 class="section-title" id="teaching-title">Teaching</h2>
+          <ul class="course-list">
+            $courses
+          </ul>
+          <p class="subtle teaching-archive">
+            <a href="$teaching_archive_url">Teaching archive on my institutional profile</a>
+          </p>
+        </section>
+        <section id="contact" class="section" aria-labelledby="contact-title">
+          <h2 class="section-title" id="contact-title">Contact</h2>
+          <div class="contact-grid">
+            <div>
+              <p><a class="email" href="mailto:$email">$email</a></p>
+              <p class="subtle">$contact_invitation</p>
+            </div>
+            <address>$address</address>
+          </div>
+        </section>
+      </main>
+      $footer
+    </div>
+  </body>
+</html>
