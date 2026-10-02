@@ -208,6 +208,8 @@ def main():
                 assert unquote(url.fragment) in destination.ids, f'Broken anchor: {href}'
     for item in structured['itemListElement']:
         assert unquote(urlsplit(item['item']['@id']).fragment) in publication_page.ids
+    for verification in SOURCE.glob('google*.html'):
+        assert (ROOT / verification.name).read_bytes() == verification.read_bytes(), f'Google verification file changed or missing: {verification.name}'
     assert 'Disallow: /' not in (ROOT / 'robots.txt').read_text()
     print(f'Checked profile consistency, {len(entries)} exact BibTeX citations, {len(teaching["courses"])} teaching entries, notices, footer links, local assets, JSON-LD, and local links.')
 

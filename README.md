@@ -159,6 +159,13 @@ python3 scripts/build_site.py --refresh
 
 `build_publications.py` remains a compatibility entry point for the same build.
 
+## Google Search Console ownership
+
+Google's downloaded `google*.html` verification file lives at the repository
+root. The build copies it unchanged to the same public URL on every deployment.
+Keep this file: Google periodically checks it to maintain ownership verification.
+It is not a page template and must not be edited or given a site footer.
+
 ## Search engines and AI readers
 
 The build generates these public files inside `build/` from the same source data:

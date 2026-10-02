@@ -20,6 +20,10 @@ def copy_static_sources():
         else:
             shutil.copy2(source, destination)
 
+    # Google requires ownership verification files to remain at their exact URLs.
+    for source in ROOT.glob('google*.html'):
+        shutil.copy2(source, OUTPUT / source.name)
+
 
 if __name__ == '__main__':
     raise SystemExit('Run python3 scripts/build_site.py; it creates the complete build/ directory.')
