@@ -1,5 +1,10 @@
 # Homepage papers, in display order. Use keys from publications.bib.
+# Recent work first, followed by selected contributions in biology and circuits.
+FN26:sand
+cravo2026
 cravo2025mobspy
 PPHPCFNK24:nar
 CFN24:npj
+FNR24:podc
 FNS21:jacm
+FNNS19:tcad

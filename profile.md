@@ -19,6 +19,22 @@ I am co-PI of the [Cellular Computing Group](https://www.cellularcomputing.group
 
 [All publications](https://mfuegger.github.io/publications.html)
 
+### [Asymptotic Subspace Consensus in Dynamic Networks](https://doi.org/10.4230/LIPIcs.SAND.2026.10)
+
+Matthias Függer, Thomas Nowak
+
+5th Symposium on Algorithmic Foundations of Dynamic Networks (SAND 2026) · 2026
+
+[PDF](https://drops.dagstuhl.de/storage/00lipics/lipics-vol373-sand2026/LIPIcs.SAND.2026.10/LIPIcs.SAND.2026.10.pdf) [DOI](https://doi.org/10.4230/LIPIcs.SAND.2026.10) [arXiv](https://arxiv.org/abs/2602.19121) [HAL](https://hal.science/hal-05774068v1)
+
+### [A quasi-stationary distribution bound for fault analysis in gene regulatory networks](https://doi.org/10.1098/rsif.2025.1041)
+
+Fabricio Cravo, Matthias Függer, Thomas Nowak
+
+Journal of The Royal Society Interface · 2026
+
+[PDF](https://www.biorxiv.org/content/early/2025/10/22/2025.10.21.683707.full.pdf) [DOI](https://doi.org/10.1098/rsif.2025.1041) [HAL](https://hal.science/hal-05652063)
+
 ### [MobsPy: A programming language for biochemical reaction networks](https://doi.org/10.1371/journal.pcbi.1013024)
 
 Fabricio Cravo, Gayathri Prakash, Matthias Függer, Thomas Nowak
@@ -43,6 +59,14 @@ npj Systems Biology and Applications · 2024
 
 [PDF](https://www.nature.com/articles/s41540-024-00363-3.pdf) [DOI](https://doi.org/10.1038/s41540-024-00363-3) [bioRxiv](https://www.biorxiv.org/content/early/2023/08/26/2023.08.25.554781) [HAL](https://hal.science/hal-04786979)
 
+### [Majority consensus thresholds in competitive Lotka–Volterra populations](https://doi.org/10.1145/3662158.3662823)
+
+Matthias Függer, Thomas Nowak, Joel Rybicki
+
+Proceedings of the 43rd ACM Symposium on Principles of Distributed Computing (PODC) · 2024
+
+[PDF](https://hal.science/hal-04786996/document) [DOI](https://doi.org/10.1145/3662158.3662823) [arXiv](https://arxiv.org/abs/2405.03568) [HAL](https://hal.science/hal-04786996)
+
 ### [Tight Bounds for Asymptotic and Approximate Consensus](https://doi.org/10.1145/3485242)
 
 Matthias Függer, Thomas Nowak, Manfred Schwarz
@@ -50,6 +74,14 @@ Matthias Függer, Thomas Nowak, Manfred Schwarz
 Journal of the ACM (JACM) · 2021
 
 [PDF](https://hal.science/hal-03408731/document) [DOI](https://doi.org/10.1145/3485242) [HAL](https://hal.science/hal-03408731)
+
+### [A Faithful Binary Circuit Model](https://doi.org/10.1109/TCAD.2019.2937748)
+
+Matthias Függer, Robert Najvirt, Thomas Nowak, Ulrich Schmid
+
+IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems · 2020
+
+[PDF](https://inria.hal.science/hal-02395251/document) [DOI](https://doi.org/10.1109/TCAD.2019.2937748) [HAL](https://hal.science/hal-02395251)
 
 ### Habilitation thesis
 
