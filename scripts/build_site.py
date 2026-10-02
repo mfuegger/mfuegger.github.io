@@ -137,6 +137,16 @@ def course_recording(course):
                   accessible_label=escape(label, quote=True), course_name=escape(course['name']),
                   year=int(course['year']), title=escape(recording['title']))
 
+
+def teaching_channel(data):
+    channel = data['teaching'].get('channel')
+    if not channel:
+        return ''
+    if urlsplit(channel['url']).scheme != 'https':
+        raise ValueError('The teaching channel must use an HTTPS link.')
+    return render('teaching-channel.html', url=escape(channel['url'], quote=True),
+                  name=escape(channel['name']))
+
 def notice_outputs(data):
     notices = json.loads((ROOT / 'content/notices.json').read_text(encoding='utf-8'))
     hosting = notices['hosting']
@@ -217,6 +227,9 @@ def teaching_outputs(data):
     years = sorted({int(course['year']) for course in courses}, reverse=True)
     sections = []
     markdown = [f'# Courses and lectures — {data["name"]}\n\nCourses and guest lectures, listed by year.\n']
+    channel = data['teaching'].get('channel')
+    if channel:
+        markdown.append(f'\n[{channel["name"]} on YouTube]({channel["url"]})\n')
     for year in years:
         rendered = []
         markdown.append(f'\n## {year}\n')
@@ -249,13 +262,15 @@ def teaching_outputs(data):
             ],
         },
     }
+    if channel:
+        structured['relatedLink'] = channel['url']
     page = render(
         'teaching.html', head=head(data, structured, page='teaching'),
-        **common_layout(data, page='teaching'),
+        **common_layout(data, page='teaching'), teaching_channel=nested(teaching_channel(data), 8),
         year_links=nested('\n'.join(f'<a href="#year-{year}">{year}</a>' for year in years), 12),
         sections=nested('\n'.join(sections), 8),
     ) + '\n'
-    return page, {'teacher': data['name'], 'courses': courses, 'schemaOrg': structured}, ''.join(markdown)
+    return page, {'teacher': data['name'], **({'channel': channel} if channel else {}), 'courses': courses, 'schemaOrg': structured}, ''.join(markdown)
 
 
 def homepage(data, selected, structured, doctoral):
@@ -283,6 +298,7 @@ def homepage(data, selected, structured, doctoral):
         'group_roles': group_roles,
         'selected_papers': nested(selected, 10),
         'courses': nested(courses, 12),
+        'teaching_channel': nested(teaching_channel(data), 10),
         'course_recording': nested(next((course_recording(course) for course in ordered_courses(data)
                                          if course.get('recording')), ''), 10),
         'email': escape(data['email'], quote=True), 'contact_invitation': escape(data['contact']['invitation']),

@@ -303,6 +303,19 @@ p {
 .course-recording:hover .course-recording-action {
   text-decoration: underline;
 }
+.teaching-channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  max-width: 100%;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+.teaching-channel img {
+  flex-shrink: 0;
+  width: 29px;
+  height: 20px;
+}
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

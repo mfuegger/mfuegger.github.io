@@ -220,3 +220,8 @@ also shows the newest course with a recording, with its year clearly labelled.
 The full playlist link is preserved. The preview is a local image and a normal
 link: YouTube is contacted only after a visitor follows it. Recording metadata
 and links are included in the profile/course JSON and Markdown exports.
+
+The course-section YouTube channel link is edited once in `teaching.channel`
+in the editable profile: `name` is the channel name and `url` its address.
+It appears on the homepage and course archive with a local YouTube icon, and
+is exported in the profile/course JSON and Markdown.

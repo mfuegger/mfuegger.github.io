@@ -224,7 +224,11 @@
         "details": "MPI-INF.",
         "url": "http://resources.mpi-inf.mpg.de/departments/d1/teaching/ss15/ChipDesign/"
       }
-    ]
+    ],
+    "channel": {
+      "name": "Cellular Computing Team",
+      "url": "https://www.youtube.com/@cellularcomputingteam"
+    }
   },
   "contact": {
     "invitation": "For research inquiries and opportunities for internships, PhD studies, or postdoctoral research, please contact me.",

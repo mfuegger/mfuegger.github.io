@@ -113,6 +113,13 @@ def main():
     if newest_recording:
         assert newest_recording['url'] in homepage.links
         assert newest_recording['thumbnail'] in homepage.assets
+    if data['teaching'].get('channel'):
+        channel = data['teaching']['channel']
+        assert teaching['channel'] == channel
+        for page in (homepage, pages['teaching.html']):
+            assert channel['url'] in page.links
+            assert 'assets/youtube-icon.svg' in page.assets
+        assert channel['url'] in teaching_markdown and channel['url'] in markdown
     assert 'Teaching archive on my institutional profile' not in visible
     assert 'archive_url' not in data['teaching']
     for page in pages.values():
