@@ -1,5 +1,5 @@
 # Homepage papers, in display order. Use keys from publications.bib.
 cravo2025mobspy
 PPHPCFNK24:nar
-BFN26:isola
+CFN24:npj
 FNS21:jacm

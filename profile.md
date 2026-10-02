@@ -35,13 +35,13 @@ Nucleic Acids Research · 2025
 
 [PDF](https://hal.science/hal-04857279/document) [DOI](https://doi.org/10.1093/nar/gkae1256) [bioRxiv](https://www.biorxiv.org/content/10.1101/2024.09.02.610857v2.abstract) [HAL](https://hal.science/hal-04857279)
 
-### [Provable Coordination for LLM Agents via Message Sequence Charts](https://arxiv.org/abs/2604.17612)
+### [An Allee-based distributed algorithm for microbial whole-cell sensors](https://doi.org/10.1038/s41540-024-00363-3)
 
-Benedikt Bollig, Matthias Függer, Thomas Nowak
+Fabricio Cravo, Matthias Függer, Thomas Nowak
 
-International Symposium on Leveraging Applications of Formal Methods, Verification and Validation (ISoLA) · 2026 · Accepted, to appear
+npj Systems Biology and Applications · 2024
 
-[PDF](https://hal.science/hal-05596574/document) [arXiv](https://arxiv.org/abs/2604.17612) [HAL](https://hal.science/hal-05596574)
+[PDF](https://www.nature.com/articles/s41540-024-00363-3.pdf) [DOI](https://doi.org/10.1038/s41540-024-00363-3) [bioRxiv](https://www.biorxiv.org/content/early/2023/08/26/2023.08.25.554781) [HAL](https://hal.science/hal-04786979)
 
 ### [Tight Bounds for Asymptotic and Approximate Consensus](https://doi.org/10.1145/3485242)
 
