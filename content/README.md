@@ -42,7 +42,10 @@ The published `profile.json`, `teaching.json`, and HTML pages are exports.
 They are created in `build/` and are not committed to this repository. The editable
 profile is this folder’s `profile.json`, not the JSON export on the live website.
 
-For layout changes and local preview commands, see the [main README](../README.md).
+For layout changes, edit [templates/](../templates/) or [assets/academic.css](../assets/academic.css).
+Build and check from the repository root with `python3 scripts/build_site.py`
+and `python3 scripts/check_site.py`. Preview with
+`python3 -m http.server 8765 --bind 127.0.0.1 --directory build`.
 
 ## Course recording previews
 
