@@ -289,7 +289,11 @@ def homepage(data, selected, structured, doctoral):
         description = description.replace(escape(item['label']), link(item['url'], item['label']), 1)
     affiliations = data['affiliations']
     affiliation_html = link(affiliations[0]['url'], affiliations[0]['name']) + '<br />' + ' · '.join(escape(item['name']) for item in affiliations[1:])
-    group_roles = 'I am ' + ' and '.join(escape(group['role']) + ' of the ' + link(group['url'], group['name']) for group in data['research']['groups']) + ' ' + escape(data['research']['group_context']) + '.'
+    group_roles = '\n'.join(
+        '<li>' + escape(group['role'][:1].upper() + group['role'][1:]) + ', '
+        + link(group['url'], group['name']) + '</li>'
+        for group in data['research']['groups']
+    )
     courses = '\n'.join(render('course.html', name=link('teaching.html#' + course_id(course), course['name']),
                               details=escape(course_metadata(course)))
                         for course in ordered_courses(data)[:2])
@@ -303,7 +307,7 @@ def homepage(data, selected, structured, doctoral):
         'affiliations': affiliation_html,
         'quick_links': nested('\n'.join([link('mailto:' + data['email'], 'Email')] + [link(item['url'], item['label']) for item in data['links']]), 14),
         'research_description': escape(data['research']['description']),
-        'group_roles': group_roles,
+        'group_roles': nested(group_roles, 14),
         'selected_papers': nested(selected, 10),
         'courses': nested(courses, 12),
         'teaching_channel': nested(teaching_channel(data), 10),

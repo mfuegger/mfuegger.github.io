@@ -121,6 +121,13 @@ nav a[aria-current="page"] {
   color: var(--muted);
   margin: 0;
 }
+.group-links {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
 .portrait {
   display: block;
   width: 216px;
@@ -170,11 +177,6 @@ p {
 }
 .research-text {
   max-width: 46rem;
-}
-.group-links {
-  max-width: 46rem;
-  margin-top: 1.4rem;
-  font-size: 0.94rem;
 }
 
 /* Publication lists */
